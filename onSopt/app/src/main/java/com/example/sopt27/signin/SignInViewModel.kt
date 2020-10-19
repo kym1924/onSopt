@@ -1,25 +1,25 @@
 package com.example.sopt27.signin
 
 import android.content.SharedPreferences
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class SignInViewModel  : ViewModel() {
+class SignInViewModel : ViewModel() {
 
-    val id = MutableLiveData<String>()
-    val password = MutableLiveData<String>()
-    val autoLogin = MutableLiveData<Boolean>()
-    val isValid = MutableLiveData<Boolean>()
+    val id = MutableLiveData<String>("")
+    val password = MutableLiveData<String>("")
+
+    private val _autoLogin = MutableLiveData<Boolean>(false)
+    val autoLogin : LiveData<Boolean>
+        get() = _autoLogin
+
+    private val _isValid = MutableLiveData<Boolean>(false)
+    val isValid : LiveData<Boolean>
+        get() = _isValid
 
     lateinit var sharedPref : SharedPreferences
     lateinit var sharedEdit : SharedPreferences.Editor
-
-    init{
-        id.value = ""
-        password.value = ""
-        autoLogin.value = false
-        isValid.value = false
-    }
 
     fun setText(){
         id.value = sharedPref.getString("id", "")
@@ -29,7 +29,7 @@ class SignInViewModel  : ViewModel() {
     fun autoLogin(){
         if(id.value == sharedPref.getString("id", "") && id.value != ""
             && password.value == sharedPref.getString("password", "") && password.value != "")
-            autoLogin.value = true
+            _autoLogin.value = true
     }
 
     fun getSharedPref(sharedPreferences : SharedPreferences) {
@@ -44,6 +44,6 @@ class SignInViewModel  : ViewModel() {
     }
 
     fun validation(){
-        if(!id.value.isNullOrEmpty() && !password.value.isNullOrEmpty()) isValid.value = true
+        if(!id.value.isNullOrEmpty() && !password.value.isNullOrEmpty()) _isValid.value = true
     }
 }

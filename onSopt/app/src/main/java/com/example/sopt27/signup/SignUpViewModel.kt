@@ -6,31 +6,25 @@ import androidx.lifecycle.ViewModel
 
 class SignUpViewModel : ViewModel() {
 
-    val name = MutableLiveData<String>()
-    val id = MutableLiveData<String>()
-    val password = MutableLiveData<String>()
-    val passwordCheck = MutableLiveData<String>()
+    val name = MutableLiveData<String>("")
+    val id = MutableLiveData<String>("")
+    val password = MutableLiveData<String>("")
+    val passwordCheck = MutableLiveData<String>("")
 
     private val _isSamePassword = MutableLiveData<Boolean>(false)
     val isSamePassword : LiveData<Boolean>
         get() = _isSamePassword
 
-    val isValid = MutableLiveData<Boolean>()
-
-    init{
-        name.value = ""
-        id.value = ""
-        password.value = ""
-        passwordCheck.value = ""
-        isValid.value = false
-    }
+    private val _isValid = MutableLiveData<Boolean>(false)
+    val isValid : LiveData<Boolean>
+        get() = _isValid
 
     fun checkPassword(password : String, passwordCheck : String){
         _isSamePassword.value = password == passwordCheck
     }
 
     fun validation() {
-        isValid.value = false
-        if(!name.value.isNullOrEmpty() && !id.value.isNullOrEmpty() && isSamePassword.value!!) isValid.value = true
+        _isValid.value = false
+        if(!name.value.isNullOrEmpty() && !id.value.isNullOrEmpty() && _isSamePassword.value!!) _isValid.value = true
     }
 }
