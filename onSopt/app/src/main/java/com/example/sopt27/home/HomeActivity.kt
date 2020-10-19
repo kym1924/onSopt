@@ -1,11 +1,11 @@
 package com.example.sopt27.home
 
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.sopt27.R
 import com.example.sopt27.signin.SignInActivity
+import com.example.sopt27.util.startActivity
 import kotlinx.android.synthetic.main.activity_home.*
 
 class HomeActivity : AppCompatActivity() {
@@ -19,8 +19,7 @@ class HomeActivity : AppCompatActivity() {
         btn_logout.setOnClickListener{
             sharedEdit.clear()
             sharedEdit.apply()
-            val intent = Intent(this, SignInActivity::class.java)
-            startActivity(intent)
+            startActivity<SignInActivity>()
             finish()
         }
     }

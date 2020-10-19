@@ -10,9 +10,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.example.sopt27.R
 import com.example.sopt27.databinding.ActivitySignInBinding
+import com.example.sopt27.home.HomeActivity
 import com.example.sopt27.signup.SignUpActivity
-import com.example.sopt27.util.moveToHome
 import com.example.sopt27.util.showToast
+import com.example.sopt27.util.startActivity
 import kotlinx.android.synthetic.main.activity_sign_in.*
 
 class SignInActivity : AppCompatActivity() {
@@ -34,7 +35,7 @@ class SignInActivity : AppCompatActivity() {
 
         if(signInViewModel.autoLogin.value!!){
             showToast("자동로그인")
-            moveToHome()
+            startActivity<HomeActivity>()
             finish()
         }
     }
@@ -46,7 +47,7 @@ class SignInActivity : AppCompatActivity() {
             signInViewModel.validation()
             if (signInViewModel.isValid.value!!) {
                 signInViewModel.putSharedPref()
-                moveToHome()
+                startActivity<HomeActivity>()
                 finish()
             }
         }
