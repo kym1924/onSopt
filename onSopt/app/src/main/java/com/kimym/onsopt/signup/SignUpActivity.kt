@@ -7,6 +7,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
+import com.example.sopt27.room.UserDatabase
 import com.kimym.onsopt.R
 import com.kimym.onsopt.databinding.ActivitySignUpBinding
 import com.kimym.onsopt.signin.SignInActivity
@@ -23,6 +24,9 @@ class SignUpActivity : AppCompatActivity() {
 
         val binding : ActivitySignUpBinding = DataBindingUtil.setContentView(this, R.layout.activity_sign_up)
         binding.signUpViewModel = signUpViewModel
+
+        val userDao = UserDatabase.getDatabase(this).userDao()
+        signUpViewModel.initDao(userDao)
     }
 
     override fun onResume(){
@@ -31,14 +35,14 @@ class SignUpActivity : AppCompatActivity() {
         btn_register.setOnClickListener {
             signUpViewModel.validation()
             if (signUpViewModel.isValid.value!!) {
+                signUpViewModel.insert()
                 showToast("회원가입완료")
                 val intent = Intent(this, SignInActivity::class.java)
                 intent.putExtra("id", et_id.text.toString())
                 intent.putExtra("password", et_pw.text.toString())
                 setResult(RESULT_OK, intent)
                 finish()
-            }
-            else showToast("입력하신정보를확인하세요")
+            } else showToast("입력하신정보를확인하세요")
         }
 
         et_pw.textChangedListener{
