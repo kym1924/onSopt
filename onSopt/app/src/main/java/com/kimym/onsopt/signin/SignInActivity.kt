@@ -1,4 +1,4 @@
-package com.example.sopt27.signin
+package com.kimym.onsopt.signin
 
 import android.app.Activity
 import android.content.Context
@@ -8,12 +8,12 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import com.example.sopt27.R
-import com.example.sopt27.databinding.ActivitySignInBinding
-import com.example.sopt27.home.HomeActivity
-import com.example.sopt27.signup.SignUpActivity
-import com.example.sopt27.util.showToast
-import com.example.sopt27.util.startActivity
+import com.kimym.onsopt.R
+import com.kimym.onsopt.databinding.ActivitySignInBinding
+import com.kimym.onsopt.home.HomeActivity
+import com.kimym.onsopt.signup.SignUpActivity
+import com.kimym.onsopt.util.showToast
+import com.kimym.onsopt.util.startActivity
 import kotlinx.android.synthetic.main.activity_sign_in.*
 
 class SignInActivity : AppCompatActivity() {

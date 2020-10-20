@@ -1,4 +1,4 @@
-package com.example.sopt27
+package com.kimym.onsopt
 
 import org.junit.Test
 

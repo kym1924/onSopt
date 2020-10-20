@@ -8,7 +8,7 @@
     <data>
         <variable
             name="signUpViewModel"
-            type="com.example.sopt27.signup.SignUpViewModel" />
+            type="com.kimym.onsopt.signup.SignUpViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

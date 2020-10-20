@@ -1,4 +1,4 @@
-package com.example.sopt27
+package com.kimym.onsopt
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

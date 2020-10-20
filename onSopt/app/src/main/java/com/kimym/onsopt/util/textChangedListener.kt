@@ -1,4 +1,4 @@
-package com.example.sopt27.util
+package com.kimym.onsopt.util
 
 import android.text.Editable
 import android.text.TextWatcher

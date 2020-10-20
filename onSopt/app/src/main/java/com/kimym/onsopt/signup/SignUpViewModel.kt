@@ -1,4 +1,4 @@
-package com.example.sopt27.signup
+package com.kimym.onsopt.signup
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

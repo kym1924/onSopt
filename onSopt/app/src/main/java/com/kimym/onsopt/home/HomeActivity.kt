@@ -1,11 +1,11 @@
-package com.example.sopt27.home
+package com.kimym.onsopt.home
 
 import android.content.Context
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.example.sopt27.R
-import com.example.sopt27.signin.SignInActivity
-import com.example.sopt27.util.startActivity
+import com.kimym.onsopt.R
+import com.kimym.onsopt.signin.SignInActivity
+import com.kimym.onsopt.util.startActivity
 import kotlinx.android.synthetic.main.activity_home.*
 
 class HomeActivity : AppCompatActivity() {

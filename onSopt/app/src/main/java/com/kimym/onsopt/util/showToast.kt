@@ -1,4 +1,4 @@
-package com.example.sopt27.util
+package com.kimym.onsopt.util
 
 import android.content.Context
 import android.widget.Toast
