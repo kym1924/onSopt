@@ -3,6 +3,7 @@ package com.kimym.onsopt.recycler
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
 import com.example.sopt27.room.User
 import com.example.sopt27.room.UserDatabase
 import com.kimym.onsopt.R
@@ -26,7 +27,11 @@ class GridActivity : AppCompatActivity() {
         recyclerViewModel.init(userDao)
     }
 
-    override fun onResume(){
-        super.onResume()
+    override fun onStart(){
+        super.onStart()
+
+        recyclerViewModel.allUsers.observe(this, Observer { users ->
+            users?.let { gridAdapter.setUsers(it) }
+        })
     }
 }
