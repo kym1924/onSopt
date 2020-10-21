@@ -1,12 +1,14 @@
 package com.kimym.onsopt.recycler
 
 import android.os.Bundle
+import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import com.example.sopt27.room.User
 import com.example.sopt27.room.UserDatabase
 import com.kimym.onsopt.R
+import com.kimym.onsopt.util.showToast
 import kotlinx.android.synthetic.main.activity_linear.*
 
 class LinearActivity : AppCompatActivity() {
@@ -21,6 +23,11 @@ class LinearActivity : AppCompatActivity() {
 
         linearAdapter = LinearAdapter(this)
         linearAdapter.users = users
+        linearAdapter.setItemClickListener(object : LinearAdapter.ItemClickListener{
+            override fun onClick(view : View, position : Int) {
+                showToast("click")
+            }
+        })
         rv_linear.adapter = linearAdapter
 
         val userDao = UserDatabase.getDatabase(this).userDao()

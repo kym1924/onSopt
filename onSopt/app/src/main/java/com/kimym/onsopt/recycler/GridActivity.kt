@@ -1,12 +1,14 @@
 package com.kimym.onsopt.recycler
 
 import android.os.Bundle
+import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import com.example.sopt27.room.User
 import com.example.sopt27.room.UserDatabase
 import com.kimym.onsopt.R
+import com.kimym.onsopt.util.showToast
 import kotlinx.android.synthetic.main.activity_grid.*
 
 class GridActivity : AppCompatActivity() {
@@ -21,6 +23,12 @@ class GridActivity : AppCompatActivity() {
 
         gridAdapter = GridAdapter(this)
         gridAdapter.users = users
+        gridAdapter.setItemClickListener(object : GridAdapter.ItemClickListener{
+            override fun onClick(view : View, position : Int) {
+                showToast("click")
+            }
+        })
+
         rv_grid.adapter = gridAdapter
 
         val userDao = UserDatabase.getDatabase(this).userDao()

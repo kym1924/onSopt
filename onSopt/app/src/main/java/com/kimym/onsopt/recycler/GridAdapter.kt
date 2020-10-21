@@ -12,6 +12,16 @@ import com.kimym.onsopt.R
 class GridAdapter(private val context : Context) : RecyclerView.Adapter<GridAdapter.VHolder>(){
     var users = emptyList<User>()
 
+    private lateinit var itemClickListener : ItemClickListener
+
+    interface ItemClickListener {
+        fun onClick(view: View, position:Int)
+    }
+
+    fun setItemClickListener(itemClickListener : ItemClickListener){
+        this.itemClickListener = itemClickListener
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) : VHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.item_recycler_grid, parent,false)
         return VHolder(view)
@@ -20,9 +30,9 @@ class GridAdapter(private val context : Context) : RecyclerView.Adapter<GridAdap
     override fun getItemCount() = users.size
 
     override fun onBindViewHolder(holder: VHolder, position: Int) {
-        val current = users[position]
-        holder.id.text = current.id
-        holder.name.text = current.name
+        holder.id.text = users[position].id
+        holder.name.text = users[position].name
+        holder.itemView.setOnClickListener { itemClickListener.onClick(it, position) }
     }
 
     internal fun setUsers(users : List<User>) {
