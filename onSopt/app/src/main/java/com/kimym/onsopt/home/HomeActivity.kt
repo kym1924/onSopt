@@ -4,8 +4,8 @@ import android.content.Context
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.kimym.onsopt.R
-import com.kimym.onsopt.recycler.GridActivity
-import com.kimym.onsopt.recycler.LinearActivity
+import com.kimym.onsopt.recycler.grid.GridActivity
+import com.kimym.onsopt.recycler.linear.LinearActivity
 import com.kimym.onsopt.signin.SignInActivity
 import com.kimym.onsopt.util.startActivity
 import kotlinx.android.synthetic.main.activity_home.*

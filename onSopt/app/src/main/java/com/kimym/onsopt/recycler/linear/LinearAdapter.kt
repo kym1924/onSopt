@@ -1,4 +1,4 @@
-package com.kimym.onsopt.recycler
+package com.kimym.onsopt.recycler.linear
 
 import android.content.Context
 import android.view.LayoutInflater

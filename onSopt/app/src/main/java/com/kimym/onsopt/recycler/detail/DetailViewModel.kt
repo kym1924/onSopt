@@ -1,4 +1,4 @@
-package com.kimym.onsopt.recycler
+package com.kimym.onsopt.recycler.detail
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

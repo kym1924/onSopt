@@ -7,7 +7,7 @@
     <data>
         <variable
             name="detailViewModel"
-            type="com.kimym.onsopt.recycler.DetailViewModel" />
+            type="com.kimym.onsopt.recycler.detail.DetailViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

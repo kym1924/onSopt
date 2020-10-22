@@ -1,4 +1,4 @@
-package com.kimym.onsopt.recycler
+package com.kimym.onsopt.recycler.grid
 
 import android.os.Bundle
 import android.view.View
@@ -6,25 +6,27 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import com.kimym.onsopt.R
+import com.kimym.onsopt.recycler.RecyclerViewModel
+import com.kimym.onsopt.recycler.detail.DetailActivity
 import com.kimym.onsopt.room.User
 import com.kimym.onsopt.room.UserDatabase
 import com.kimym.onsopt.util.startActivityWithUser
-import kotlinx.android.synthetic.main.activity_linear.*
+import kotlinx.android.synthetic.main.activity_grid.*
 
-class LinearActivity : AppCompatActivity() {
+class GridActivity : AppCompatActivity() {
 
     private val recyclerViewModel : RecyclerViewModel by viewModels()
-    lateinit var linearAdapter : LinearAdapter
+    lateinit var gridAdapter : GridAdapter
     val users = mutableListOf<User>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_linear)
+        setContentView(R.layout.activity_grid)
 
-        linearAdapter = LinearAdapter(this)
-        linearAdapter.users = users
+        gridAdapter = GridAdapter(this)
+        gridAdapter.users = users
 
-        rv_linear.adapter = linearAdapter
+        rv_grid.adapter = gridAdapter
 
         val userDao = UserDatabase.getDatabase(this).userDao()
         recyclerViewModel.init(userDao)
@@ -34,14 +36,15 @@ class LinearActivity : AppCompatActivity() {
         super.onStart()
 
         recyclerViewModel.allUsers.observe(this, Observer { users ->
-            users?.let { linearAdapter.setUsers(it) }
+            users?.let { gridAdapter.setUsers(it) }
         })
     }
 
     override fun onResume(){
         super.onResume()
 
-        linearAdapter.setItemClickListener(object : LinearAdapter.ItemClickListener{
+        gridAdapter.setItemClickListener(object :
+            GridAdapter.ItemClickListener {
             override fun onClick(view : View, user : User) {
                 startActivityWithUser<DetailActivity>(user)
             }
