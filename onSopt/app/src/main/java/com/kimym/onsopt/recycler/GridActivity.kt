@@ -23,11 +23,6 @@ class GridActivity : AppCompatActivity() {
 
         gridAdapter = GridAdapter(this)
         gridAdapter.users = users
-        gridAdapter.setItemClickListener(object : GridAdapter.ItemClickListener{
-            override fun onClick(view : View, position : Int) {
-                showToast("click")
-            }
-        })
 
         rv_grid.adapter = gridAdapter
 
@@ -40,6 +35,16 @@ class GridActivity : AppCompatActivity() {
 
         recyclerViewModel.allUsers.observe(this, Observer { users ->
             users?.let { gridAdapter.setUsers(it) }
+        })
+    }
+
+    override fun onResume(){
+        super.onResume()
+
+        gridAdapter.setItemClickListener(object : GridAdapter.ItemClickListener{
+            override fun onClick(view : View, user : User) {
+                showToast("click")
+            }
         })
     }
 }

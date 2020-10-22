@@ -23,11 +23,7 @@ class LinearActivity : AppCompatActivity() {
 
         linearAdapter = LinearAdapter(this)
         linearAdapter.users = users
-        linearAdapter.setItemClickListener(object : LinearAdapter.ItemClickListener{
-            override fun onClick(view : View, position : Int) {
-                showToast("click")
-            }
-        })
+
         rv_linear.adapter = linearAdapter
 
         val userDao = UserDatabase.getDatabase(this).userDao()
@@ -39,6 +35,16 @@ class LinearActivity : AppCompatActivity() {
 
         recyclerViewModel.allUsers.observe(this, Observer { users ->
             users?.let { linearAdapter.setUsers(it) }
+        })
+    }
+
+    override fun onResume(){
+        super.onResume()
+
+        linearAdapter.setItemClickListener(object : LinearAdapter.ItemClickListener{
+            override fun onClick(view : View, user : User) {
+                showToast("click")
+            }
         })
     }
 }
