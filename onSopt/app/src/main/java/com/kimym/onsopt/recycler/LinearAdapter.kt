@@ -6,8 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.sopt27.room.User
 import com.kimym.onsopt.R
+import com.kimym.onsopt.room.User
 
 class LinearAdapter(private val context : Context) : RecyclerView.Adapter<LinearAdapter.VHolder>(){
     var users = emptyList<User>()

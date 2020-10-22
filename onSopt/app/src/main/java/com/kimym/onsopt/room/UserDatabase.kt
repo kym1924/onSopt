@@ -1,4 +1,4 @@
-package com.example.sopt27.room
+package com.kimym.onsopt.room
 
 import android.content.Context
 import androidx.room.Database

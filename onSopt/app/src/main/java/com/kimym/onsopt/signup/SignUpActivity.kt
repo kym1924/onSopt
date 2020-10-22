@@ -7,9 +7,9 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
-import com.example.sopt27.room.UserDatabase
 import com.kimym.onsopt.R
 import com.kimym.onsopt.databinding.ActivitySignUpBinding
+import com.kimym.onsopt.room.UserDatabase
 import com.kimym.onsopt.signin.SignInActivity
 import com.kimym.onsopt.util.showToast
 import com.kimym.onsopt.util.textChangedListener

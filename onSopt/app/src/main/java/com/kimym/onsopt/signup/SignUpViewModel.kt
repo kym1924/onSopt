@@ -4,8 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.sopt27.room.User
-import com.example.sopt27.room.UserDao
+import com.kimym.onsopt.room.User
+import com.kimym.onsopt.room.UserDao
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 

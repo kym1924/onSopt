@@ -6,8 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.sopt27.room.User
 import com.kimym.onsopt.R
+import com.kimym.onsopt.room.User
 
 class GridAdapter(private val context : Context) : RecyclerView.Adapter<GridAdapter.VHolder>(){
     var users = emptyList<User>()

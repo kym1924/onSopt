@@ -1,4 +1,4 @@
-package com.example.sopt27.room
+package com.kimym.onsopt.room
 
 import android.os.Parcelable
 import androidx.room.Entity

@@ -2,8 +2,8 @@ package com.kimym.onsopt.recycler
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
-import com.example.sopt27.room.User
-import com.example.sopt27.room.UserDao
+import com.kimym.onsopt.room.User
+import com.kimym.onsopt.room.UserDao
 
 class RecyclerViewModel : ViewModel(){
 

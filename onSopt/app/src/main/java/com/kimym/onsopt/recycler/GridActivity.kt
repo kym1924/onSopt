@@ -5,9 +5,9 @@ import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
-import com.example.sopt27.room.User
-import com.example.sopt27.room.UserDatabase
 import com.kimym.onsopt.R
+import com.kimym.onsopt.room.User
+import com.kimym.onsopt.room.UserDatabase
 import com.kimym.onsopt.util.showToast
 import kotlinx.android.synthetic.main.activity_grid.*
 
