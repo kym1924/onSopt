@@ -8,7 +8,7 @@ import androidx.lifecycle.Observer
 import com.kimym.onsopt.R
 import com.kimym.onsopt.room.User
 import com.kimym.onsopt.room.UserDatabase
-import com.kimym.onsopt.util.showToast
+import com.kimym.onsopt.util.startActivityWithUser
 import kotlinx.android.synthetic.main.activity_grid.*
 
 class GridActivity : AppCompatActivity() {
@@ -43,7 +43,7 @@ class GridActivity : AppCompatActivity() {
 
         gridAdapter.setItemClickListener(object : GridAdapter.ItemClickListener{
             override fun onClick(view : View, user : User) {
-                showToast("click")
+                startActivityWithUser<DetailActivity>(user)
             }
         })
     }

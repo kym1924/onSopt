@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="detailViewModel"
+            type="com.kimym.onsopt.recycler.DetailViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/black"
+        tools:context=".recycler.detail.DetailActivity">
+
+        <TextView
+            android:id="@+id/tv_logo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/title"
+            android:textSize="60sp"
+            android:textColor="@color/yellow"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_marginTop="100dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_detail_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{detailViewModel.detailId}"
+            android:textSize="20sp"
+            android:textColor="@color/yellow"
+            android:textStyle="bold"
+            android:layout_marginTop="50dp"
+            app:layout_constraintEnd_toEndOf="@id/tv_logo"
+            app:layout_constraintStart_toStartOf="@id/tv_logo"
+            app:layout_constraintTop_toBottomOf="@id/tv_logo"/>
+
+        <TextView
+            android:id="@+id/tv_detail_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{detailViewModel.detailName}"
+            android:textSize="20sp"
+            android:textColor="@color/yellow"
+            android:textStyle="bold"
+            android:layout_marginTop="15dp"
+            app:layout_constraintEnd_toEndOf="@id/tv_logo"
+            app:layout_constraintStart_toStartOf="@id/tv_logo"
+            app:layout_constraintTop_toBottomOf="@id/tv_detail_id"/>
+
+        <TextView
+            android:id="@+id/tv_detail_part"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@={detailViewModel.detailPart}"
+            android:textSize="20sp"
+            android:textColor="@color/yellow"
+            android:textStyle="bold"
+            android:layout_marginTop="15dp"
+            app:layout_constraintEnd_toEndOf="@id/tv_logo"
+            app:layout_constraintStart_toStartOf="@id/tv_logo"
+            app:layout_constraintTop_toBottomOf="@id/tv_detail_name"/>
+
+        <TextView
+            android:id="@+id/tv_detail_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@={detailViewModel.detailDate}"
+            android:textSize="20sp"
+            android:textColor="@color/yellow"
+            android:textStyle="bold"
+            android:layout_marginTop="15dp"
+            app:layout_constraintEnd_toEndOf="@id/tv_logo"
+            app:layout_constraintStart_toStartOf="@id/tv_logo"
+            app:layout_constraintTop_toBottomOf="@id/tv_detail_part"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
