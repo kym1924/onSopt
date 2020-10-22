@@ -16,16 +16,14 @@ import kotlinx.android.synthetic.main.activity_linear.*
 class LinearActivity : AppCompatActivity() {
 
     private val recyclerViewModel : RecyclerViewModel by viewModels()
-    lateinit var linearAdapter : LinearAdapter
-    val users = mutableListOf<User>()
+    private val linearAdapter : LinearAdapter = LinearAdapter(this)
+    private val users = mutableListOf<User>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_linear)
 
-        linearAdapter = LinearAdapter(this)
         linearAdapter.users = users
-
         rv_linear.adapter = linearAdapter
 
         val userDao = UserDatabase.getDatabase(this).userDao()

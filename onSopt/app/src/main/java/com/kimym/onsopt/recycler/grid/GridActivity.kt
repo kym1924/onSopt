@@ -16,16 +16,14 @@ import kotlinx.android.synthetic.main.activity_grid.*
 class GridActivity : AppCompatActivity() {
 
     private val recyclerViewModel : RecyclerViewModel by viewModels()
-    lateinit var gridAdapter : GridAdapter
-    val users = mutableListOf<User>()
+    private val gridAdapter : GridAdapter = GridAdapter(this)
+    private val users = mutableListOf<User>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_grid)
 
-        gridAdapter = GridAdapter(this)
         gridAdapter.users = users
-
         rv_grid.adapter = gridAdapter
 
         val userDao = UserDatabase.getDatabase(this).userDao()
