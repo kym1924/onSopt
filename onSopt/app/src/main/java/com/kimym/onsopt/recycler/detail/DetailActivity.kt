@@ -18,7 +18,13 @@ class DetailActivity : AppCompatActivity() {
         val binding : ActivityDetailBinding = DataBindingUtil.setContentView(this, R.layout.activity_detail)
         binding.detailViewModel = detailViewModel
 
+    }
+
+    override fun onStart(){
+        super.onStart()
+
         val user = intent.getParcelableExtra<User>("user")
         detailViewModel.init(user!!)
+
     }
 }
