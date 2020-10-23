@@ -7,20 +7,12 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.kimym.onsopt.R
+import com.kimym.onsopt.recycler.detail.DetailActivity
 import com.kimym.onsopt.room.User
+import com.kimym.onsopt.util.startActivityWithUser
 
 class LinearAdapter(private val context : Context) : RecyclerView.Adapter<LinearAdapter.VHolder>(){
     var users = emptyList<User>()
-
-    private lateinit var itemClickListener : ItemClickListener
-
-    interface ItemClickListener {
-        fun onClick(view : View, user : User)
-    }
-
-    fun setItemClickListener(itemClickListener : ItemClickListener){
-        this.itemClickListener = itemClickListener
-    }
 
     override fun onCreateViewHolder(parent : ViewGroup, viewType : Int) : VHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.item_recycler_linear, parent,false)
@@ -32,7 +24,10 @@ class LinearAdapter(private val context : Context) : RecyclerView.Adapter<Linear
     override fun onBindViewHolder(holder : VHolder, position : Int) {
         holder.id.text = users[position].id
         holder.name.text = users[position].name
-        holder.itemView.setOnClickListener { itemClickListener.onClick(it, users[position]) }
+
+        holder.itemView.setOnClickListener{
+            context.startActivityWithUser<DetailActivity>(users[position])
+        }
     }
 
     internal fun setUsers(users : List<User>) {
