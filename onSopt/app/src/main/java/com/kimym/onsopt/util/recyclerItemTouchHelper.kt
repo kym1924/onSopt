@@ -8,7 +8,7 @@ import com.kimym.onsopt.recycler.RecyclerViewModel
 
 fun recyclerItemTouchHelper(recyclerView : RecyclerView, viewModel : RecyclerViewModel) {
     val itemTouchHelper = ItemTouchHelper(
-        object : ItemTouchHelper.SimpleCallback((ItemTouchHelper.UP or ItemTouchHelper.DOWN), ItemTouchHelper.LEFT) {
+        object : ItemTouchHelper.SimpleCallback((ItemTouchHelper.UP or ItemTouchHelper.DOWN or ItemTouchHelper.START or ItemTouchHelper.END), ItemTouchHelper.LEFT) {
 
             val adapter = recyclerView.adapter!!
 
@@ -17,6 +17,10 @@ fun recyclerItemTouchHelper(recyclerView : RecyclerView, viewModel : RecyclerVie
                 from : ViewHolder,
                 to : ViewHolder
             ) : Boolean {
+                val fromPosition = from.adapterPosition
+                val toPosition = to.adapterPosition
+                adapter.notifyItemMoved(fromPosition, toPosition)
+                viewModel.changeIdx(fromPosition, toPosition)
                 return false
             }
 
