@@ -21,4 +21,9 @@ class RecyclerViewModel : ViewModel(){
     fun delete(position : Int) = viewModelScope.launch(Dispatchers.IO) {
         userDao.deleteUser(allUsers.value!![position])
     }
+
+
+    fun update(users : List<User>) = viewModelScope.launch(Dispatchers.IO) {
+        userDao.updateIdx(users)
+    }
 }

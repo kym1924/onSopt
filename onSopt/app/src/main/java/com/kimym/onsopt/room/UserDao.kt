@@ -13,4 +13,7 @@ interface UserDao {
 
     @Delete
     suspend fun deleteUser(user : User)
+
+    @Update(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun updateIdx(users : List<User>)
 }
