@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import com.kimym.onsopt.R
 import com.kimym.onsopt.recycler.RecyclerViewModel
-import com.kimym.onsopt.room.User
 import com.kimym.onsopt.room.UserDatabase
 import com.kimym.onsopt.util.recyclerItemTouchHelper
 import kotlinx.android.synthetic.main.activity_grid.*
@@ -15,13 +14,11 @@ class GridActivity : AppCompatActivity() {
 
     private val recyclerViewModel : RecyclerViewModel by viewModels()
     private val gridAdapter : GridAdapter = GridAdapter(this)
-    private val users = mutableListOf<User>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_grid)
 
-        gridAdapter.users = users
         rv_grid.adapter = gridAdapter
         recyclerItemTouchHelper(rv_grid, recyclerViewModel)
 
