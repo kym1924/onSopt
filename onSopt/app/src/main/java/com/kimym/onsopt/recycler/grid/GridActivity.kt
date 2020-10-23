@@ -10,6 +10,7 @@ import com.kimym.onsopt.recycler.RecyclerViewModel
 import com.kimym.onsopt.recycler.detail.DetailActivity
 import com.kimym.onsopt.room.User
 import com.kimym.onsopt.room.UserDatabase
+import com.kimym.onsopt.util.recyclerItemTouchHelper
 import com.kimym.onsopt.util.startActivityWithUser
 import kotlinx.android.synthetic.main.activity_grid.*
 
@@ -25,6 +26,7 @@ class GridActivity : AppCompatActivity() {
 
         gridAdapter.users = users
         rv_grid.adapter = gridAdapter
+        recyclerItemTouchHelper(rv_grid, recyclerViewModel)
 
         val userDao = UserDatabase.getDatabase(this).userDao()
         recyclerViewModel.init(userDao)
