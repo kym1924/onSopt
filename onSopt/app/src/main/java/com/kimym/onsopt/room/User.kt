@@ -10,7 +10,7 @@ import java.text.SimpleDateFormat
 @Entity(tableName = "userDb")
 data class User (
     @PrimaryKey(autoGenerate = true)
-    val idx : Int,
+    var idx : Int,
     val name : String,
     val id : String,
     val password : String,
