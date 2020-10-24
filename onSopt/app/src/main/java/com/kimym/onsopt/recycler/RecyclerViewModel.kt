@@ -22,12 +22,11 @@ class RecyclerViewModel : ViewModel(){
         userDao.deleteUser(allUsers.value!![position])
     }
 
-
     fun update(users : List<User>) = viewModelScope.launch(Dispatchers.IO) {
         userDao.updateIdx(users)
     }
 
-    fun resetList(userList : ArrayList<User>, users : List<User>) {
+    fun resetList(userList : MutableList<User>, users : List<User>) {
         userList.clear()
         userList.addAll(users)
     }

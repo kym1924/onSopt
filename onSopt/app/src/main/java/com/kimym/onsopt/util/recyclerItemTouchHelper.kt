@@ -8,7 +8,7 @@ import com.kimym.onsopt.room.User
 import java.util.*
 
 
-fun recyclerItemTouchHelper(recyclerView : RecyclerView, viewModel : RecyclerViewModel, userList : ArrayList<User>) {
+fun recyclerItemTouchHelper(recyclerView : RecyclerView, viewModel : RecyclerViewModel, userList : MutableList<User>) {
     val itemTouchHelper = ItemTouchHelper(
         object : ItemTouchHelper.SimpleCallback((ItemTouchHelper.UP or ItemTouchHelper.DOWN or ItemTouchHelper.START or ItemTouchHelper.END), ItemTouchHelper.LEFT) {
 

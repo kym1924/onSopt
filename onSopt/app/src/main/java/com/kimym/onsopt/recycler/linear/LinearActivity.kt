@@ -15,7 +15,7 @@ class LinearActivity : AppCompatActivity() {
 
     private val recyclerViewModel : RecyclerViewModel by viewModels()
     private val linearAdapter : LinearAdapter = LinearAdapter(this)
-    private var userList = ArrayList<User>()
+    private var userList = mutableListOf<User>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -15,7 +15,7 @@ class GridActivity : AppCompatActivity() {
 
     private val recyclerViewModel : RecyclerViewModel by viewModels()
     private val gridAdapter : GridAdapter = GridAdapter(this)
-    private var userList = ArrayList<User>()
+    private var userList = mutableListOf<User>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
