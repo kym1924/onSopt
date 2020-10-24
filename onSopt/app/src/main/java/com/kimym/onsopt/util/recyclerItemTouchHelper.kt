@@ -47,6 +47,11 @@ fun recyclerItemTouchHelper(recyclerView : RecyclerView, viewModel : RecyclerVie
                 viewModel.delete(swipedPosition)
                 adapter.notifyItemRemoved(swipedPosition)
             }
+
+            override fun clearView(recyclerView: RecyclerView, viewHolder: ViewHolder) {
+                super.clearView(recyclerView, viewHolder)
+                viewModel.update(userList)
+            }
         })
     itemTouchHelper.attachToRecyclerView(recyclerView)
 }
