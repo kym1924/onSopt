@@ -33,8 +33,7 @@ class GridActivity : AppCompatActivity() {
 
         recyclerViewModel.allUsers.observe(this, Observer { users ->
             users?.let {
-                userList.clear()
-                userList.addAll(users)
+                recyclerViewModel.resetList(userList, users)
                 gridAdapter.setUsers(it) }
         })
     }

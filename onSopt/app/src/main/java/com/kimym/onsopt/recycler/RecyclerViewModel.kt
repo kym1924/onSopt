@@ -26,4 +26,9 @@ class RecyclerViewModel : ViewModel(){
     fun update(users : List<User>) = viewModelScope.launch(Dispatchers.IO) {
         userDao.updateIdx(users)
     }
+
+    fun resetList(userList : ArrayList<User>, users : List<User>) {
+        userList.clear()
+        userList.addAll(users)
+    }
 }
