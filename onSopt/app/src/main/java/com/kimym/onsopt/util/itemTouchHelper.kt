@@ -8,11 +8,12 @@ import com.kimym.onsopt.room.User
 import java.util.*
 
 
-fun recyclerItemTouchHelper(recyclerView : RecyclerView, viewModel : RecyclerViewModel, userList : MutableList<User>) {
+fun RecyclerView.itemTouchHelper(recyclerViewModel : RecyclerViewModel, userList : MutableList<User>) {
+
+    val adapter = this.adapter!!
+
     val itemTouchHelper = ItemTouchHelper(
         object : ItemTouchHelper.SimpleCallback((ItemTouchHelper.UP or ItemTouchHelper.DOWN or ItemTouchHelper.START or ItemTouchHelper.END), ItemTouchHelper.LEFT) {
-
-            val adapter = recyclerView.adapter!!
 
             override fun onMove(
                 recyclerView : RecyclerView,
@@ -44,14 +45,14 @@ fun recyclerItemTouchHelper(recyclerView : RecyclerView, viewModel : RecyclerVie
 
             override fun onSwiped(viewHolder: ViewHolder, swipeDir: Int) {
                 val swipedPosition = viewHolder.adapterPosition
-                viewModel.delete(swipedPosition)
+                recyclerViewModel.delete(swipedPosition)
                 adapter.notifyItemRemoved(swipedPosition)
             }
 
             override fun clearView(recyclerView: RecyclerView, viewHolder: ViewHolder) {
                 super.clearView(recyclerView, viewHolder)
-                viewModel.update(userList)
+                recyclerViewModel.update(userList)
             }
         })
-    itemTouchHelper.attachToRecyclerView(recyclerView)
+    itemTouchHelper.attachToRecyclerView(this)
 }

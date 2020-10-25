@@ -8,7 +8,7 @@ import com.kimym.onsopt.R
 import com.kimym.onsopt.recycler.RecyclerViewModel
 import com.kimym.onsopt.room.User
 import com.kimym.onsopt.room.UserDatabase
-import com.kimym.onsopt.util.recyclerItemTouchHelper
+import com.kimym.onsopt.util.itemTouchHelper
 import kotlinx.android.synthetic.main.activity_grid.*
 
 class GridActivity : AppCompatActivity() {
@@ -22,7 +22,7 @@ class GridActivity : AppCompatActivity() {
         setContentView(R.layout.activity_grid)
 
         rv_grid.adapter = gridAdapter
-        recyclerItemTouchHelper(rv_grid, recyclerViewModel, userList)
+        rv_grid.itemTouchHelper(recyclerViewModel, userList)
 
         val userDao = UserDatabase.getDatabase(this).userDao()
         recyclerViewModel.init(userDao)

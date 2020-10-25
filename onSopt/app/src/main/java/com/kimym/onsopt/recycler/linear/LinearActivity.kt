@@ -8,7 +8,7 @@ import com.kimym.onsopt.R
 import com.kimym.onsopt.recycler.RecyclerViewModel
 import com.kimym.onsopt.room.User
 import com.kimym.onsopt.room.UserDatabase
-import com.kimym.onsopt.util.recyclerItemTouchHelper
+import com.kimym.onsopt.util.itemTouchHelper
 import kotlinx.android.synthetic.main.activity_linear.*
 
 class LinearActivity : AppCompatActivity() {
@@ -22,7 +22,7 @@ class LinearActivity : AppCompatActivity() {
         setContentView(R.layout.activity_linear)
 
         rv_linear.adapter = linearAdapter
-        recyclerItemTouchHelper(rv_linear, recyclerViewModel, userList)
+        rv_linear.itemTouchHelper(recyclerViewModel, userList)
 
         val userDao = UserDatabase.getDatabase(this).userDao()
         recyclerViewModel.init(userDao)
