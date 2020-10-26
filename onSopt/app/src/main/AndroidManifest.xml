@@ -11,8 +11,6 @@
         android:theme="@style/BlackTheme">
         <activity android:name=".recycler.RecyclerActivity" />
         <activity android:name=".recycler.detail.DetailActivity" />
-        <activity android:name=".recycler.grid.GridActivity" />
-        <activity android:name=".recycler.linear.LinearActivity" />
         <activity android:name=".home.HomeActivity" />
         <activity android:name=".signup.SignUpActivity" />
         <activity android:name=".signin.SignInActivity">
