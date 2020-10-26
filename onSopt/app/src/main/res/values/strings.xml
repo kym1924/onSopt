@@ -14,6 +14,5 @@
     <string name="home">Home</string>
     <string name="logout">Logout</string>
     <string name="passwordCheck">비밀번호확인</string>
-    <string name="linear">linear</string>
-    <string name="grid">grid</string>
+    <string name="recycler">recycler</string>
 </resources>
