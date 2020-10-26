@@ -15,7 +15,6 @@ class SignUpViewModel : ViewModel() {
     val id = MutableLiveData<String>("")
     val password = MutableLiveData<String>("")
     val passwordCheck = MutableLiveData<String>("")
-    lateinit var userDao : UserDao
 
     private val _isSamePassword = MutableLiveData<Boolean>(false)
     val isSamePassword : LiveData<Boolean>
@@ -24,6 +23,8 @@ class SignUpViewModel : ViewModel() {
     private val _isValid = MutableLiveData<Boolean>(false)
     val isValid : LiveData<Boolean>
         get() = _isValid
+
+    private lateinit var userDao : UserDao
 
     fun initDao(dao : UserDao){
         userDao = dao

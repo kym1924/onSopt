@@ -18,8 +18,8 @@ class SignInViewModel : ViewModel() {
     val isValid : LiveData<Boolean>
         get() = _isValid
 
-    lateinit var sharedPref : SharedPreferences
-    lateinit var sharedEdit : SharedPreferences.Editor
+    private lateinit var sharedPref : SharedPreferences
+    private lateinit var sharedEdit : SharedPreferences.Editor
 
     fun setText(){
         id.value = sharedPref.getString("id", "")
