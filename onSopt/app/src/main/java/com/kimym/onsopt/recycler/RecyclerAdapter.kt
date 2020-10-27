@@ -18,19 +18,13 @@ class RecyclerAdapter(private val context : Context) : RecyclerView.Adapter<Recy
     var layoutItem = R.layout.item_recycler_linear
 
     override fun onCreateViewHolder(parent : ViewGroup, viewType : Int) : VHolder {
-        val view = LayoutInflater.from(context).inflate(layoutItem, parent,false)
-        return VHolder(view)
+        return VHolder(LayoutInflater.from(context).inflate(layoutItem, parent,false))
     }
 
     override fun getItemCount() = users.size
 
     override fun onBindViewHolder(holder : VHolder, position : Int) {
-        holder.id.text = users[position].id
-        holder.name.text = users[position].name
-
-        holder.itemView.setOnClickListener{
-            context.startActivityWithUser<DetailActivity>(users[position])
-        }
+        holder.bind(users[position])
     }
 
     internal fun setUsers(users : List<User>) {
@@ -43,7 +37,16 @@ class RecyclerAdapter(private val context : Context) : RecyclerView.Adapter<Recy
     }
 
     inner class VHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val id = itemView.findViewById<TextView>(R.id.tv_user_id)
-        val name = itemView.findViewById<TextView>(R.id.tv_user_name)
+        val id: TextView = itemView.findViewById(R.id.tv_user_id)
+        val name: TextView = itemView.findViewById(R.id.tv_user_name)
+
+        fun bind(user : User){
+            id.text = user.id
+            name.text = user.name
+
+            itemView.setOnClickListener{
+                context.startActivityWithUser<DetailActivity>(user)
+            }
+        }
     }
 }
