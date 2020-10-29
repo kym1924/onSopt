@@ -5,6 +5,8 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.kimym.onsopt.R
 import com.kimym.onsopt.databinding.ActivityRecyclerBinding
 import com.kimym.onsopt.room.User
@@ -23,27 +25,35 @@ class RecyclerActivity : AppCompatActivity() {
         val binding : ActivityRecyclerBinding = DataBindingUtil.setContentView(this, R.layout.activity_recycler)
         binding.recyclerViewModel = recyclerViewModel
 
-        rv_recycler.adapter = adapter
-        rv_recycler.itemTouchHelper(recyclerViewModel, userList)
-
         val userDao = UserDatabase.getDatabase(this).userDao()
         recyclerViewModel.init(userDao)
     }
 
-    override fun onStart(){
+    override fun onStart() {
         super.onStart()
 
         recyclerViewModel.allUsers.observe(this, Observer { users ->
             users?.let {
+                adapter.setUsers(it)
                 recyclerViewModel.resetList(userList, users)
-                adapter.setUsers(it) }
-        })
-
-        recyclerViewModel.layoutItem.observe(this, Observer {layoutItem ->
-            layoutItem?.let {
-                adapter.setLayout(layoutItem)
-                rv_recycler.adapter = adapter
             }
         })
+
+        recyclerViewModel.layoutItem.observe(this, Observer { layoutItem ->
+            layoutItem?.let {
+                adapter.setLayout(it)
+                rv_recycler.adapter = adapter
+                rv_recycler.layoutManager = when (layoutItem) {
+                    R.layout.item_recycler_linear -> LinearLayoutManager(this@RecyclerActivity)
+                    else -> GridLayoutManager(this@RecyclerActivity,3)
+                }
+            }
+        })
+    }
+
+    override fun onResume(){
+        super.onResume()
+
+        rv_recycler.itemTouchHelper(recyclerViewModel, userList)
     }
 }
