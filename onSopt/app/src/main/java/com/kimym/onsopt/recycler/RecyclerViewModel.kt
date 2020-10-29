@@ -12,7 +12,7 @@ import kotlinx.coroutines.launch
 
 class RecyclerViewModel : ViewModel(){
 
-    lateinit var userDao : UserDao
+    private lateinit var userDao : UserDao
     lateinit var allUsers : LiveData<List<User>>
 
     private val _layoutItem = MutableLiveData<Int>(R.layout.item_recycler_linear)
