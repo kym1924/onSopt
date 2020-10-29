@@ -1,12 +1,10 @@
 package com.kimym.onsopt.recycler
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.kimym.onsopt.R
 import com.kimym.onsopt.databinding.ActivityRecyclerBinding
 import com.kimym.onsopt.room.User
@@ -42,11 +40,8 @@ class RecyclerActivity : AppCompatActivity() {
         recyclerViewModel.layoutItem.observe(this, Observer { layoutItem ->
             layoutItem?.let {
                 adapter.setLayout(it)
+                recyclerViewModel.changeLayoutManager(rv_recycler)
                 rv_recycler.adapter = adapter
-                rv_recycler.layoutManager = when (layoutItem) {
-                    R.layout.item_recycler_linear -> LinearLayoutManager(this@RecyclerActivity)
-                    else -> GridLayoutManager(this@RecyclerActivity,3)
-                }
             }
         })
     }
