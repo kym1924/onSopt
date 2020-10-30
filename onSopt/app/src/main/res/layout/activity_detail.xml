@@ -6,8 +6,8 @@
 
     <data>
         <variable
-            name="detailViewModel"
-            type="com.kimym.onsopt.recycler.detail.DetailViewModel" />
+            name="user"
+            type="com.kimym.onsopt.room.User"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -34,7 +34,7 @@
             android:id="@+id/tv_detail_id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{detailViewModel.detailId}"
+            android:text="@{user.id}"
             android:textSize="20sp"
             android:textColor="@color/yellow"
             android:textStyle="bold"
@@ -47,7 +47,7 @@
             android:id="@+id/tv_detail_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{detailViewModel.detailName}"
+            android:text="@{user.name}"
             android:textSize="20sp"
             android:textColor="@color/yellow"
             android:textStyle="bold"
@@ -60,7 +60,7 @@
             android:id="@+id/tv_detail_part"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@={detailViewModel.detailPart}"
+            android:text="@{user.part}"
             android:textSize="20sp"
             android:textColor="@color/yellow"
             android:textStyle="bold"
@@ -73,7 +73,7 @@
             android:id="@+id/tv_detail_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@={detailViewModel.detailDate}"
+            android:text="@{user.date}"
             android:textSize="20sp"
             android:textColor="@color/yellow"
             android:textStyle="bold"
