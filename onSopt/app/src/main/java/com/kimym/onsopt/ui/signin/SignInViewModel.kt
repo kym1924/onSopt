@@ -1,4 +1,4 @@
-package com.kimym.onsopt.signin
+package com.kimym.onsopt.ui.signin
 
 import android.content.SharedPreferences
 import androidx.lifecycle.LiveData

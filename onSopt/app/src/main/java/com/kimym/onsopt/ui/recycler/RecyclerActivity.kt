@@ -1,4 +1,4 @@
-package com.kimym.onsopt.recycler
+package com.kimym.onsopt.ui.recycler
 
 import android.os.Bundle
 import androidx.activity.viewModels

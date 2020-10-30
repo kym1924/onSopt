@@ -1,11 +1,11 @@
-package com.kimym.onsopt.home
+package com.kimym.onsopt.ui
 
 import android.content.Context
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.kimym.onsopt.R
-import com.kimym.onsopt.recycler.RecyclerActivity
-import com.kimym.onsopt.signin.SignInActivity
+import com.kimym.onsopt.ui.recycler.RecyclerActivity
+import com.kimym.onsopt.ui.signin.SignInActivity
 import com.kimym.onsopt.util.startActivity
 import kotlinx.android.synthetic.main.activity_home.*
 

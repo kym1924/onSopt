@@ -7,14 +7,14 @@
     <data>
         <variable
             name="signInViewModel"
-            type="com.kimym.onsopt.signin.SignInViewModel" />
+            type="com.kimym.onsopt.ui.signin.SignInViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/black"
-        tools:context=".signin.SignInActivity">
+        tools:context=".ui.signin.SignInActivity">
 
         <TextView
             android:id="@+id/tv_logo"

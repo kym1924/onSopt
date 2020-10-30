@@ -8,14 +8,14 @@
     <data>
         <variable
             name="signUpViewModel"
-            type="com.kimym.onsopt.signup.SignUpViewModel" />
+            type="com.kimym.onsopt.ui.signup.SignUpViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/black"
-        tools:context=".signup.SignUpActivity">
+        tools:context=".ui.signup.SignUpActivity">
 
         <TextView
             android:id="@+id/tv_name"

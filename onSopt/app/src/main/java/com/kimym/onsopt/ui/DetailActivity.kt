@@ -1,4 +1,4 @@
-package com.kimym.onsopt.recycler.detail
+package com.kimym.onsopt.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

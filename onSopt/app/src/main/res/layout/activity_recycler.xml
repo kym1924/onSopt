@@ -4,7 +4,7 @@
     <data>
         <variable
             name="recyclerViewModel"
-            type="com.kimym.onsopt.recycler.RecyclerViewModel" />
+            type="com.kimym.onsopt.ui.recycler.RecyclerViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/black"
-        tools:context=".recycler.RecyclerActivity">
+        tools:context=".ui.recycler.RecyclerActivity">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_recycler"

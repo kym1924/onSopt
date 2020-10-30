@@ -3,7 +3,7 @@ package com.kimym.onsopt.util
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
-import com.kimym.onsopt.recycler.RecyclerViewModel
+import com.kimym.onsopt.ui.recycler.RecyclerViewModel
 import com.kimym.onsopt.room.User
 import java.util.*
 

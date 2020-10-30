@@ -1,4 +1,4 @@
-package com.kimym.onsopt.signin
+package com.kimym.onsopt.ui.signin
 
 import android.app.Activity
 import android.content.Context
@@ -10,8 +10,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.kimym.onsopt.R
 import com.kimym.onsopt.databinding.ActivitySignInBinding
-import com.kimym.onsopt.home.HomeActivity
-import com.kimym.onsopt.signup.SignUpActivity
+import com.kimym.onsopt.ui.HomeActivity
+import com.kimym.onsopt.ui.signup.SignUpActivity
 import com.kimym.onsopt.util.showToast
 import com.kimym.onsopt.util.startActivity
 import kotlinx.android.synthetic.main.activity_sign_in.*

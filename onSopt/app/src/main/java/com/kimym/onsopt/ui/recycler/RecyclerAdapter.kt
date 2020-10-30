@@ -1,4 +1,4 @@
-package com.kimym.onsopt.recycler
+package com.kimym.onsopt.ui.recycler
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -7,8 +7,8 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.kimym.onsopt.R
-import com.kimym.onsopt.recycler.detail.DetailActivity
 import com.kimym.onsopt.room.User
+import com.kimym.onsopt.ui.DetailActivity
 import com.kimym.onsopt.util.startActivityWithUser
 
 
