@@ -17,7 +17,7 @@ class HomeActivity : AppCompatActivity() {
         val sharedPref = getSharedPreferences("pref", Context.MODE_PRIVATE)
         val sharedEdit = sharedPref.edit()
 
-        tv_logout.setOnClickListener{
+        btn_logout.setOnClickListener{
             sharedEdit.clear()
             sharedEdit.apply()
             startActivity<SignInActivity>()
