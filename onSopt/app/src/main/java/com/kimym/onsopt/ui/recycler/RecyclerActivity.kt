@@ -7,6 +7,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import com.kimym.onsopt.R
 import com.kimym.onsopt.databinding.ActivityRecyclerBinding
+import com.kimym.onsopt.databinding.ItemRecyclerLinearBinding
 import com.kimym.onsopt.room.User
 import com.kimym.onsopt.room.UserDatabase
 import com.kimym.onsopt.util.itemTouchHelper
@@ -15,7 +16,7 @@ import kotlinx.android.synthetic.main.activity_recycler.*
 class RecyclerActivity : AppCompatActivity() {
 
     private val recyclerViewModel : RecyclerViewModel by viewModels()
-    private val adapter : RecyclerAdapter = RecyclerAdapter(this)
+    private val adapter = RecyclerAdapter<ItemRecyclerLinearBinding>(this)
     private var userList = mutableListOf<User>()
 
     override fun onCreate(savedInstanceState: Bundle?) {

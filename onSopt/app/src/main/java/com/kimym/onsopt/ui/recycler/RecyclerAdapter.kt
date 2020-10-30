@@ -4,26 +4,26 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
+import androidx.databinding.DataBindingUtil
+import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView
+import com.kimym.onsopt.BR
 import com.kimym.onsopt.R
 import com.kimym.onsopt.room.User
 import com.kimym.onsopt.ui.DetailActivity
 import com.kimym.onsopt.util.startActivityWithUser
 
+class RecyclerAdapter<B : ViewDataBinding>(private val context : Context) : RecyclerView.Adapter<RecyclerAdapter<B>.VHolder<B>>(){
 
-class RecyclerAdapter(private val context : Context) : RecyclerView.Adapter<RecyclerAdapter.VHolder>(){
-
-    var users = emptyList<User>()
+    private var users = emptyList<User>()
     var layoutItem = R.layout.item_recycler_linear
 
-    override fun onCreateViewHolder(parent : ViewGroup, viewType : Int) : VHolder {
-        return VHolder(LayoutInflater.from(context).inflate(layoutItem, parent,false))
-    }
+    override fun onCreateViewHolder(parent : ViewGroup, viewType : Int) =
+        VHolder<B>(LayoutInflater.from(parent.context).inflate(layoutItem, parent,false))
 
     override fun getItemCount() = users.size
 
-    override fun onBindViewHolder(holder : VHolder, position : Int) {
+    override fun onBindViewHolder(holder : VHolder<B>, position : Int) {
         holder.bind(users[position])
     }
 
@@ -36,14 +36,12 @@ class RecyclerAdapter(private val context : Context) : RecyclerView.Adapter<Recy
         this.layoutItem = layoutItem
     }
 
-    inner class VHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val id: TextView = itemView.findViewById(R.id.tv_user_id)
-        val name: TextView = itemView.findViewById(R.id.tv_user_name)
+    inner class VHolder<B : ViewDataBinding>(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        fun bind(user : User){
-            id.text = user.id
-            name.text = user.name
+        val binding : B = DataBindingUtil.bind(itemView)!!
 
+        fun bind(user: User) {
+            binding.setVariable(BR.user, user)
             itemView.setOnClickListener{
                 context.startActivityWithUser<DetailActivity>(user)
             }

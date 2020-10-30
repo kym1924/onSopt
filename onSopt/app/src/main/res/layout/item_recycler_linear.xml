@@ -1,43 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:padding="5dp"
-    android:layout_margin="5dp"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+<layout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/white">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <ImageView
-        android:id="@+id/img_recycler_logo"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:src="@drawable/logo"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <data>
+        <variable
+            name="user"
+            type="com.kimym.onsopt.room.User" />
+    </data>
 
-    <TextView
-        android:id="@+id/tv_user_id"
-        android:layout_width="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:padding="5dp"
+        android:layout_margin="5dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginBottom="40dp"
-        android:textSize="16sp"
-        android:textColor="@color/black"
-        app:layout_constraintTop_toTopOf="@id/img_recycler_logo"
-        app:layout_constraintBottom_toBottomOf="@id/img_recycler_logo"
-        app:layout_constraintStart_toEndOf="@id/img_recycler_logo"/>
+        android:background="@color/white">
 
-    <TextView
-        android:id="@+id/tv_user_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:textSize="16sp"
-        android:textColor="@color/black"
-        app:layout_constraintTop_toTopOf="@id/img_recycler_logo"
-        app:layout_constraintBottom_toBottomOf="@id/img_recycler_logo"
-        app:layout_constraintStart_toStartOf="@id/tv_user_id" />
+        <ImageView
+            android:id="@+id/img_recycler_logo"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/logo"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
+        <TextView
+            android:id="@+id/tv_user_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginBottom="40dp"
+            android:text="@{user.id}"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            app:layout_constraintTop_toTopOf="@id/img_recycler_logo"
+            app:layout_constraintBottom_toBottomOf="@id/img_recycler_logo"
+            app:layout_constraintStart_toEndOf="@id/img_recycler_logo"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/tv_user_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:text="@{user.name}"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            app:layout_constraintTop_toTopOf="@id/img_recycler_logo"
+            app:layout_constraintBottom_toBottomOf="@id/img_recycler_logo"
+            app:layout_constraintStart_toStartOf="@id/tv_user_id" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
