@@ -14,7 +14,6 @@ class SignUpViewModel : ViewModel() {
     val name = MutableLiveData<String>("")
     val id = MutableLiveData<String>("")
     val password = MutableLiveData<String>("")
-    val passwordCheck = MutableLiveData<String>("")
 
     private val _isSamePassword = MutableLiveData<Boolean>(false)
     val isSamePassword : LiveData<Boolean>
