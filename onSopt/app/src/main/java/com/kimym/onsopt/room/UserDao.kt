@@ -16,4 +16,7 @@ interface UserDao {
 
     @Update(onConflict = OnConflictStrategy.REPLACE)
     suspend fun updateIdx(users : List<User>)
+
+    @Query("SELECT * from userDb WHERE id = :id")
+    fun getMy(id : String) : User
 }

@@ -8,6 +8,9 @@
         <variable
             name="user"
             type="com.kimym.onsopt.room.User"/>
+        <variable
+            name="myPageViewModel"
+            type="com.kimym.onsopt.ui.fragment.MyPageViewModel"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
