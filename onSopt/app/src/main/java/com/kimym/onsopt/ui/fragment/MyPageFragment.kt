@@ -39,7 +39,7 @@ class MyPageFragment : Fragment() {
     ): View? {
         val binding : FragmentMyPageBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_my_page, container, false)
         binding.myPageViewModel = myPageViewModel
-        binding.user = myPageViewModel.my
+        binding.my = myPageViewModel.my
         return binding.root
     }
 
