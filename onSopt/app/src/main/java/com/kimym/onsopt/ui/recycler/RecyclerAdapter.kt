@@ -16,7 +16,7 @@ import com.kimym.onsopt.util.startActivityWithUser
 class RecyclerAdapter<B : ViewDataBinding>(private val context : Context) : RecyclerView.Adapter<RecyclerAdapter<B>.VHolder<B>>(){
 
     private var users = emptyList<User>()
-    var layoutItem = R.layout.item_recycler_linear
+    private var layoutItem = R.layout.item_recycler_linear
 
     override fun onCreateViewHolder(parent : ViewGroup, viewType : Int) =
         VHolder<B>(LayoutInflater.from(parent.context).inflate(layoutItem, parent,false))

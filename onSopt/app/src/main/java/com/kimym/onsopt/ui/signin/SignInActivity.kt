@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.kimym.onsopt.R
 import com.kimym.onsopt.databinding.ActivitySignInBinding
-import com.kimym.onsopt.ui.HomeActivity
+import com.kimym.onsopt.ui.main.MainActivity
 import com.kimym.onsopt.ui.signup.SignUpActivity
 import com.kimym.onsopt.util.showToast
 import com.kimym.onsopt.util.startActivity
@@ -35,7 +35,7 @@ class SignInActivity : AppCompatActivity() {
 
         if(signInViewModel.autoLogin.value!!){
             showToast("자동로그인")
-            startActivity<HomeActivity>()
+            startActivity<MainActivity>()
             finish()
         }
     }
@@ -47,7 +47,7 @@ class SignInActivity : AppCompatActivity() {
             signInViewModel.validation()
             if (signInViewModel.isValid.value!!) {
                 signInViewModel.putSharedPref()
-                startActivity<HomeActivity>()
+                startActivity<MainActivity>()
                 finish()
             }
         }

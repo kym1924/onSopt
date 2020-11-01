@@ -15,4 +15,6 @@
     <string name="logout">Logout</string>
     <string name="passwordCheck">비밀번호확인</string>
     <string name="recycler">recycler</string>
+    <string name="myPage">MyPage</string>
+    <string name="user">User</string>
 </resources>
