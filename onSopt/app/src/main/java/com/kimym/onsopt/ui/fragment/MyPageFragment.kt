@@ -8,9 +8,12 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Observer
 import com.kimym.onsopt.R
 import com.kimym.onsopt.databinding.FragmentMyPageBinding
 import com.kimym.onsopt.room.UserDatabase
+import com.kimym.onsopt.ui.signin.SignInActivity
+import com.kimym.onsopt.util.startActivity
 
 class MyPageFragment : Fragment() {
 
@@ -38,5 +41,13 @@ class MyPageFragment : Fragment() {
         binding.myPageViewModel = myPageViewModel
         binding.user = myPageViewModel.my
         return binding.root
+    }
+
+    override fun onStart(){
+        super.onStart()
+
+        myPageViewModel.logout.observe(this, Observer{ logout ->
+            logout.let { if(it) requireContext().startActivity<SignInActivity>() }
+        })
     }
 }
