@@ -1,6 +1,5 @@
 package com.kimym.onsopt.ui.signup
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
@@ -10,7 +9,6 @@ import androidx.lifecycle.Observer
 import com.kimym.onsopt.R
 import com.kimym.onsopt.databinding.ActivitySignUpBinding
 import com.kimym.onsopt.room.UserDatabase
-import com.kimym.onsopt.ui.signin.SignInActivity
 import com.kimym.onsopt.util.showToast
 import com.kimym.onsopt.util.textChangedListener
 import kotlinx.android.synthetic.main.activity_sign_up.*
@@ -32,29 +30,23 @@ class SignUpActivity : AppCompatActivity() {
     override fun onResume(){
         super.onResume()
 
-        btn_register.setOnClickListener {
-            signUpViewModel.validation()
-            if (signUpViewModel.isValid.value!!) {
-                signUpViewModel.insert()
-                showToast("회원가입완료")
-                val intent = Intent(this, SignInActivity::class.java)
-                intent.putExtra("id", et_id.text.toString())
-                intent.putExtra("password", et_pw.text.toString())
-                setResult(RESULT_OK, intent)
-                finish()
-            } else showToast("입력하신정보를확인하세요")
-        }
+        et_pw.textChangedListener{ signUpViewModel.checkPassword(et_pw.text.toString(), et_pw_check.text.toString()) }
 
-        et_pw.textChangedListener{
-            signUpViewModel.checkPassword(et_pw.text.toString(), et_pw_check.text.toString())
-        }
+        et_pw_check.textChangedListener { signUpViewModel.checkPassword(et_pw.text.toString(), et_pw_check.text.toString()) }
 
-        et_pw_check.textChangedListener {
-            signUpViewModel.checkPassword(et_pw.text.toString(), et_pw_check.text.toString())
-        }
+        signUpViewModel.isSamePassword.observe(this, Observer{ it->
+            it.let { img_check_pw.visibility = if(it) View.VISIBLE else View.INVISIBLE } })
 
-        signUpViewModel.isSamePassword.observe(this, Observer{ value->
-            value.let {img_check_pw.visibility = if(value) View.VISIBLE else View.INVISIBLE }
+        signUpViewModel.isValid.observe(this, Observer { it ->
+            it.let { if(it) signUpViewModel.insert() else showToast("입력하신정보를확인하세요.")} })
+
+        signUpViewModel.isSuccess.observe(this, Observer { it ->
+            it.let {
+                if(it) {
+                    showToast("회원가입완료")
+                    finish()
+                }
+            }
         })
     }
 }

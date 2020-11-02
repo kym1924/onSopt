@@ -19,29 +19,32 @@ class SignUpViewModel : ViewModel() {
     val isSamePassword : LiveData<Boolean>
         get() = _isSamePassword
 
-    private val _isValid = MutableLiveData<Boolean>(false)
+    private val _isValid = MutableLiveData<Boolean>()
     val isValid : LiveData<Boolean>
         get() = _isValid
 
+    private val _isSuccess = MutableLiveData<Boolean>()
+    val isSuccess : LiveData<Boolean>
+        get() = _isSuccess
+
     private lateinit var userDao : UserDao
 
-    fun initDao(dao : UserDao){
+    fun initDao(dao : UserDao) {
         userDao = dao
     }
 
-    fun checkPassword(password : String, passwordCheck : String){
-        _isSamePassword.value = password == passwordCheck
+    fun checkPassword(password : String, passwordCheck : String) {
+        _isSamePassword.value = (password == passwordCheck && !password.isNullOrEmpty())
     }
 
     fun validation() {
-        _isValid.value = false
-        if(!name.value.isNullOrEmpty() && !id.value.isNullOrEmpty() && _isSamePassword.value!!) _isValid.value = true
+        _isValid.value = (!name.value.isNullOrEmpty() && !id.value.isNullOrEmpty() &&
+                !password.value.isNullOrEmpty() && _isSamePassword.value!!)
     }
 
     fun insert() = viewModelScope.launch(Dispatchers.IO) {
-        if (isValid.value!!) {
-            val user = User(idx = 0, name = name.value!!, id = id.value!!, password = password.value!!)
-            userDao.insertUser(user)
-        }
+        val user = User(idx = 0, name = name.value!!, id = id.value!!, password = password.value!!)
+        userDao.insertUser(user)
+        _isSuccess.postValue(true)
     }
 }

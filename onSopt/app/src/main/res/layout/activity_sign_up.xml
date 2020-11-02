@@ -142,6 +142,7 @@
             android:layout_marginTop="50dp"
             android:text="@string/register"
             android:background="@drawable/background_button"
+            android:onClick="@{() -> signUpViewModel.validation()}"
             app:layout_constraintEnd_toEndOf="@id/et_pw"
             app:layout_constraintStart_toStartOf="@id/et_pw"
             app:layout_constraintTop_toBottomOf="@id/et_pw_check" />
