@@ -19,4 +19,7 @@ interface UserDao {
 
     @Query("SELECT * from userDb WHERE id = :id")
     fun getMy(id : String) : User
+
+    @Query("SELECT * from userDb ORDER BY idx DESC LIMIT 1")
+    fun fromSignUp() : User
 }
