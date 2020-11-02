@@ -1,13 +1,14 @@
 package com.kimym.onsopt.ui.signin
 
 import android.content.Context
-import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import com.kimym.onsopt.R
 import com.kimym.onsopt.databinding.ActivitySignInBinding
+import com.kimym.onsopt.room.UserDatabase
 import com.kimym.onsopt.ui.main.MainActivity
 import com.kimym.onsopt.ui.signup.SignUpActivity
 import com.kimym.onsopt.util.showToast
@@ -17,7 +18,6 @@ import kotlinx.android.synthetic.main.activity_sign_in.*
 class SignInActivity : AppCompatActivity() {
 
     private val signInViewModel : SignInViewModel by viewModels()
-    private lateinit var sharedPref : SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,31 +25,42 @@ class SignInActivity : AppCompatActivity() {
         val binding : ActivitySignInBinding = DataBindingUtil.setContentView(this, R.layout.activity_sign_in)
         binding.signInViewModel = signInViewModel
 
-        sharedPref = getSharedPreferences("pref", Context.MODE_PRIVATE)
-        signInViewModel.getSharedPref(sharedPref)
+        val sharedPref = getSharedPreferences("pref", Context.MODE_PRIVATE)
+        val userDao = UserDatabase.getDatabase(this).userDao()
+        signInViewModel.init(sharedPref, userDao)
 
-        signInViewModel.setText()
-        signInViewModel.autoLogin()
-
-        if(signInViewModel.autoLogin.value!!){
-            showToast("자동로그인")
-            startActivity<MainActivity>()
-            finish()
-        }
+        signInViewModel.autoLogin.observe(this, Observer{ it ->
+            it.let { if(it) {
+                showToast("자동로그인")
+                startActivity<MainActivity>()
+                finish()
+            }}
+        })
     }
 
-    override fun onResume() {
+    override fun onResume(){
         super.onResume()
 
-        btn_login.setOnClickListener {
-            signInViewModel.validation()
-            if (signInViewModel.isValid.value!!) {
+        signInViewModel.isValid.observe(this, Observer{ it ->
+            it.let { if(it) {
                 signInViewModel.putSharedPref()
                 startActivity<MainActivity>()
                 finish()
+            }}
+        })
+
+        tv_register.setOnClickListener{ startActivity<SignUpActivity>() }
+    }
+
+    override fun onRestart(){
+        super.onRestart()
+
+        signInViewModel.fromSignUp()
+        signInViewModel.fromSignUp.observe(this, Observer{ user ->
+            user?.let{
+                et_id.setText(user.id)
+                et_pw.setText(user.password)
             }
-        }
-        
-        tv_register.setOnClickListener { startActivity<SignUpActivity>() }
+        })
     }
 }
