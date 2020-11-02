@@ -1,8 +1,6 @@
 package com.kimym.onsopt.ui.signin
 
-import android.app.Activity
 import android.content.Context
-import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.activity.viewModels
@@ -40,10 +38,10 @@ class SignInActivity : AppCompatActivity() {
         }
     }
 
-    override fun onResume(){
+    override fun onResume() {
         super.onResume()
 
-        btn_login.setOnClickListener{
+        btn_login.setOnClickListener {
             signInViewModel.validation()
             if (signInViewModel.isValid.value!!) {
                 signInViewModel.putSharedPref()
@@ -51,18 +49,7 @@ class SignInActivity : AppCompatActivity() {
                 finish()
             }
         }
-
-        tv_register.setOnClickListener{
-            val intent = Intent(this, SignUpActivity::class.java)
-            startActivityForResult(intent, 1)
-        }
-    }
-
-    override fun onActivityResult(requestCode : Int, resultCode : Int, data : Intent?){
-        super.onActivityResult(requestCode, resultCode, data)
-        if(requestCode == 1 && resultCode == Activity.RESULT_OK) {
-            et_id.setText(data?.getStringExtra("id"))
-            et_pw.setText(data?.getStringExtra("password"))
-        }
+        
+        tv_register.setOnClickListener { startActivity<SignUpActivity>() }
     }
 }
