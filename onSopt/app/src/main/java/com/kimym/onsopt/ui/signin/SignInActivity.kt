@@ -1,6 +1,8 @@
 package com.kimym.onsopt.ui.signin
 
+import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -49,13 +51,21 @@ class SignInActivity : AppCompatActivity() {
             }}
         })
 
-        tv_register.setOnClickListener{ startActivity<SignUpActivity>() }
+        tv_register.setOnClickListener{
+            val intent = Intent(this, SignUpActivity::class.java)
+            startActivityForResult(intent, 1)
+        }
+    }
+
+    override fun onActivityResult(requestCode : Int, resultCode : Int, data : Intent?){
+        super.onActivityResult(requestCode, resultCode, data)
+        if(requestCode == 1 && resultCode == Activity.RESULT_OK)
+            signInViewModel.fromSignUp()
     }
 
     override fun onRestart(){
         super.onRestart()
 
-        signInViewModel.fromSignUp()
         signInViewModel.fromSignUp.observe(this, Observer{ user ->
             user?.let{
                 et_id.setText(user.id)
