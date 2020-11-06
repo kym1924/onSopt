@@ -2,7 +2,6 @@ package com.kimym.onsopt.ui.signup
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -24,6 +23,7 @@ class SignUpActivity : AppCompatActivity() {
 
         val binding : ActivitySignUpBinding = DataBindingUtil.setContentView(this, R.layout.activity_sign_up)
         binding.signUpViewModel = signUpViewModel
+        binding.lifecycleOwner = this
 
         val userDao = UserDatabase.getDatabase(this).userDao()
         signUpViewModel.initDao(userDao)
@@ -35,9 +35,6 @@ class SignUpActivity : AppCompatActivity() {
         et_pw.textChangedListener{ signUpViewModel.checkPassword(et_pw.text.toString(), et_pw_check.text.toString()) }
 
         et_pw_check.textChangedListener { signUpViewModel.checkPassword(et_pw.text.toString(), et_pw_check.text.toString()) }
-
-        signUpViewModel.isSamePassword.observe(this, Observer{ it->
-            it.let { img_check_pw.visibility = if(it) View.VISIBLE else View.INVISIBLE } })
 
         signUpViewModel.isValid.observe(this, Observer { it ->
             it.let { if(it) signUpViewModel.insert() else showToast("입력하신정보를확인하세요.")} })
