@@ -20,7 +20,7 @@ class HomeFragment : Fragment() {
     override fun onStart(){
         super.onStart()
 
-        vp_home.adapter = HomePagerAdapter(requireActivity().supportFragmentManager)
+        vp_home.adapter = HomePagerAdapter(childFragmentManager)
         tab_layout.setupWithViewPager(vp_home)
         tab_layout.apply{
             getTabAt(0)?.text = "INFO"
