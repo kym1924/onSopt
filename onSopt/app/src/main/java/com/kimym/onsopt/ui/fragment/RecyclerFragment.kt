@@ -57,7 +57,6 @@ class RecyclerFragment : Fragment() {
         recyclerViewModel.layoutItem.observe(this, Observer { layoutItem ->
             layoutItem?.let {
                 adapter.setLayout(it)
-                recyclerViewModel.changeLayoutManager(rv_recycler)
                 rv_recycler.adapter = adapter
             }
         })

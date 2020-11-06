@@ -4,9 +4,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.kimym.onsopt.R
 import com.kimym.onsopt.room.User
 import com.kimym.onsopt.room.UserDao
@@ -43,10 +40,5 @@ class RecyclerViewModel : ViewModel(){
     fun changeLayout(){
         if(_layoutItem.value==R.layout.item_recycler_linear) _layoutItem.value = R.layout.item_recycler_grid
         else _layoutItem.value = R.layout.item_recycler_linear
-    }
-
-    fun changeLayoutManager(recyclerView : RecyclerView){
-        if(_layoutItem.value==R.layout.item_recycler_linear) recyclerView.layoutManager= LinearLayoutManager(recyclerView.context)
-        else recyclerView.layoutManager = GridLayoutManager(recyclerView.context, 3)
     }
 }
