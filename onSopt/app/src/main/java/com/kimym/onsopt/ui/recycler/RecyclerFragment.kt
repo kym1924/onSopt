@@ -1,4 +1,4 @@
-package com.kimym.onsopt.ui.fragment
+package com.kimym.onsopt.ui.recycler
 
 import android.content.Context
 import android.os.Bundle
@@ -14,8 +14,6 @@ import com.kimym.onsopt.databinding.FragmentRecyclerBinding
 import com.kimym.onsopt.databinding.ItemRecyclerLinearBinding
 import com.kimym.onsopt.room.User
 import com.kimym.onsopt.room.UserDatabase
-import com.kimym.onsopt.ui.recycler.RecyclerAdapter
-import com.kimym.onsopt.ui.recycler.RecyclerViewModel
 import com.kimym.onsopt.util.itemTouchHelper
 import kotlinx.android.synthetic.main.fragment_recycler.*
 

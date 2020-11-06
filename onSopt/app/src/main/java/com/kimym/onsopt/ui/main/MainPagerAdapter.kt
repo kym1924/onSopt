@@ -3,9 +3,9 @@ package com.kimym.onsopt.ui.main
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
-import com.kimym.onsopt.ui.fragment.MyPageFragment
-import com.kimym.onsopt.ui.fragment.HomeFragment
-import com.kimym.onsopt.ui.fragment.RecyclerFragment
+import com.kimym.onsopt.ui.home.HomeFragment
+import com.kimym.onsopt.ui.mypage.MyPageFragment
+import com.kimym.onsopt.ui.recycler.RecyclerFragment
 
 class MainPagerAdapter (fm: FragmentManager) :
     FragmentPagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {

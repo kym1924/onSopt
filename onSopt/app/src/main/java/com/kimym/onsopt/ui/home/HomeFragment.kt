@@ -1,4 +1,4 @@
-package com.kimym.onsopt.ui.fragment
+package com.kimym.onsopt.ui.home
 
 import android.os.Bundle
 import android.view.LayoutInflater

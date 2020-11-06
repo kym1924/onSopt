@@ -1,4 +1,4 @@
-package com.kimym.onsopt.ui.fragment
+package com.kimym.onsopt.ui.mypage
 
 import android.content.Context
 import android.os.Bundle

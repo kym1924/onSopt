@@ -10,14 +10,14 @@
             type="com.kimym.onsopt.room.User"/>
         <variable
             name="myPageViewModel"
-            type="com.kimym.onsopt.ui.fragment.MyPageViewModel"/>
+            type="com.kimym.onsopt.ui.mypage.MyPageViewModel"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/black"
-        tools:context=".ui.fragment.MyPageFragment">
+        tools:context=".ui.mypage.MyPageFragment">
 
         <TextView
             android:id="@+id/tv_logo"
