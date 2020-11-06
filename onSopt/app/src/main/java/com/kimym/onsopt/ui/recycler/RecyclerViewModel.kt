@@ -32,9 +32,9 @@ class RecyclerViewModel : ViewModel(){
         userDao.updateIdx(users)
     }
 
-    fun resetList(userList : MutableList<User>, users : List<User>) {
+    fun resetList(userList : MutableList<User>, allUsers : List<User>) {
         userList.clear()
-        userList.addAll(users)
+        userList.addAll(allUsers)
     }
 
     fun changeLayout(){

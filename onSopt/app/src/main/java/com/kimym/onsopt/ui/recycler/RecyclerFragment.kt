@@ -15,13 +15,13 @@ import com.kimym.onsopt.databinding.ItemRecyclerLinearBinding
 import com.kimym.onsopt.room.User
 import com.kimym.onsopt.room.UserDatabase
 import com.kimym.onsopt.util.itemTouchHelper
-import kotlinx.android.synthetic.main.fragment_recycler.*
 
 class RecyclerFragment : Fragment() {
 
     private val recyclerViewModel : RecyclerViewModel by activityViewModels()
     private var userList = mutableListOf<User>()
     lateinit var adapter : RecyclerAdapter<ItemRecyclerLinearBinding>
+    lateinit var binding : FragmentRecyclerBinding
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -36,8 +36,9 @@ class RecyclerFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding : FragmentRecyclerBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_recycler, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_recycler, container, false)
         binding.recyclerViewModel = recyclerViewModel
+        binding.lifecycleOwner = this
 
         return binding.root
     }
@@ -45,23 +46,23 @@ class RecyclerFragment : Fragment() {
     override fun onStart() {
         super.onStart()
 
-        recyclerViewModel.allUsers.observe(this, Observer { users ->
-            users?.let {
-                adapter.setUsers(it)
-                recyclerViewModel.resetList(userList, users)
+        recyclerViewModel.allUsers.observe(this, Observer { allUsers ->
+            allUsers?.let {
+                adapter.setUsers(allUsers)
+                recyclerViewModel.resetList(userList, allUsers)
             }
         })
 
         recyclerViewModel.layoutItem.observe(this, Observer { layoutItem ->
             layoutItem?.let {
-                adapter.setLayout(it)
-                rv_recycler.adapter = adapter
+                adapter.setLayout(layoutItem)
+                binding.rvRecycler.adapter = adapter
             }
         })
     }
 
     override fun onResume(){
         super.onResume()
-        rv_recycler.itemTouchHelper(recyclerViewModel, userList)
+        binding.rvRecycler.itemTouchHelper(recyclerViewModel, userList)
     }
 }

@@ -9,8 +9,8 @@ import com.kimym.onsopt.R
 object RecyclerBinding {
     @BindingAdapter("setLayout")
     @JvmStatic
-    fun setLayout(recyclerView : RecyclerView, layoutItem : Int){
-        if(layoutItem== R.layout.item_recycler_linear) recyclerView.layoutManager= LinearLayoutManager(recyclerView.context)
+    fun setLayout(recyclerView : RecyclerView, layoutItem : Int) {
+        if(layoutItem == R.layout.item_recycler_linear) recyclerView.layoutManager = LinearLayoutManager(recyclerView.context)
         else recyclerView.layoutManager = GridLayoutManager(recyclerView.context, 3)
     }
 }
