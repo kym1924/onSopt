@@ -17,4 +17,6 @@
     <string name="recycler">recycler</string>
     <string name="myPage">MyPage</string>
     <string name="user">User</string>
+    <string name="info">info</string>
+    <string name="other">other</string>
 </resources>
