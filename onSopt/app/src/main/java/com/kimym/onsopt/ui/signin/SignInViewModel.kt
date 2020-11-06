@@ -19,9 +19,9 @@ class SignInViewModel : ViewModel() {
     val autoLogin : LiveData<Boolean>
         get() = _autoLogin
 
-    private val _isValid = MutableLiveData<Boolean>(false)
-    val isValid : LiveData<Boolean>
-        get() = _isValid
+    private val _isLogin = MutableLiveData<Boolean>()
+    val isLogin : LiveData<Boolean>
+        get() = _isLogin
 
     private val _fromSignUp = MutableLiveData<User>()
     val fromSignUp : LiveData<User>
@@ -50,14 +50,22 @@ class SignInViewModel : ViewModel() {
             _autoLogin.value = true
     }
 
-    fun putSharedPref() {
+    fun validation() {
+        if(!id.value.isNullOrEmpty() && !password.value.isNullOrEmpty()) login()
+        else _isLogin.value = false
+    }
+
+    private fun login() = viewModelScope.launch(Dispatchers.IO) {
+        if(userDao.login(id.value!!) == password.value!!) {
+            putSharedPref()
+            _isLogin.postValue(true)
+        } else _isLogin.postValue(false)
+    }
+
+    private fun putSharedPref() {
         sharedEdit.putString("id", id.value)
         sharedEdit.putString("password", password.value)
         sharedEdit.apply()
-    }
-
-    fun validation() {
-        if(!id.value.isNullOrEmpty() && !password.value.isNullOrEmpty()) _isValid.value = true
     }
 
     fun fromSignUp() = viewModelScope.launch(Dispatchers.IO) {

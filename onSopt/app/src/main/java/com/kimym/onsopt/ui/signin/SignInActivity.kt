@@ -42,12 +42,8 @@ class SignInActivity : AppCompatActivity() {
     override fun onResume(){
         super.onResume()
 
-        signInViewModel.isValid.observe(this, Observer{ it ->
-            it.let { if(it) {
-                signInViewModel.putSharedPref()
-                startActivity<MainActivity>()
-            }}
-        })
+        signInViewModel.isLogin.observe(this, Observer{ it ->
+            it.let { if(it) startActivity<MainActivity>() else showToast("입력하신정보를확인하세요.")} })
 
         tv_register.setOnClickListener{
             val intent = Intent(this, SignUpActivity::class.java)
