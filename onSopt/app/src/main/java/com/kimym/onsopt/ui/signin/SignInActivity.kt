@@ -35,7 +35,6 @@ class SignInActivity : AppCompatActivity() {
             it.let { if(it) {
                 showToast("자동로그인")
                 startActivity<MainActivity>()
-                finish()
             }}
         })
     }
@@ -47,7 +46,6 @@ class SignInActivity : AppCompatActivity() {
             it.let { if(it) {
                 signInViewModel.putSharedPref()
                 startActivity<MainActivity>()
-                finish()
             }}
         })
 

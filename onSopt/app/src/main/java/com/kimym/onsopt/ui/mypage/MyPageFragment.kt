@@ -47,7 +47,7 @@ class MyPageFragment : Fragment() {
         super.onStart()
 
         myPageViewModel.logout.observe(this, Observer{ logout ->
-            logout.let { if(it) requireContext().startActivity<SignInActivity>() }
+            logout.let { if(it) requireActivity().startActivity<SignInActivity>() }
         })
     }
 }
