@@ -15,55 +15,60 @@ import com.kimym.onsopt.ui.main.MainActivity
 import com.kimym.onsopt.ui.signup.SignUpActivity
 import com.kimym.onsopt.util.showToast
 import com.kimym.onsopt.util.startActivity
-import kotlinx.android.synthetic.main.activity_sign_in.*
 
 class SignInActivity : AppCompatActivity() {
 
+    lateinit var binding : ActivitySignInBinding
     private val signInViewModel : SignInViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val binding : ActivitySignInBinding = DataBindingUtil.setContentView(this, R.layout.activity_sign_in)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_sign_in)
         binding.signInViewModel = signInViewModel
 
         val sharedPref = getSharedPreferences("pref", Context.MODE_PRIVATE)
         val userDao = UserDatabase.getDatabase(this).userDao()
         signInViewModel.init(sharedPref, userDao)
 
-        signInViewModel.autoLogin.observe(this, Observer{ it ->
-            it.let { if(it) {
+        signInViewModel.autoLogin.observe(this, Observer { autoLogin ->
+            autoLogin.let {
+                if(autoLogin) {
                 showToast("자동로그인")
-                startActivity<MainActivity>()
-            }}
+                startActivity<MainActivity>() }
+            }
         })
     }
 
-    override fun onResume(){
+    override fun onResume() {
         super.onResume()
 
-        signInViewModel.isLogin.observe(this, Observer{ it ->
-            it.let { if(it) startActivity<MainActivity>() else showToast("입력하신정보를확인하세요.")} })
+        signInViewModel.isLogin.observe(this, Observer { isLogin ->
+            isLogin?.let {
+                if(isLogin) startActivity<MainActivity>()
+                else showToast("입력하신정보를확인하세요.")
+            }
+        })
 
-        tv_register.setOnClickListener{
+        binding.tvRegister.setOnClickListener {
             val intent = Intent(this, SignUpActivity::class.java)
             startActivityForResult(intent, 1)
         }
     }
 
-    override fun onActivityResult(requestCode : Int, resultCode : Int, data : Intent?){
+    override fun onActivityResult(requestCode : Int, resultCode : Int, data : Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if(requestCode == 1 && resultCode == Activity.RESULT_OK)
             signInViewModel.fromSignUp()
     }
 
-    override fun onRestart(){
+    override fun onRestart() {
         super.onRestart()
 
-        signInViewModel.fromSignUp.observe(this, Observer{ user ->
+        signInViewModel.fromSignUp.observe(this, Observer { user ->
             user?.let{
-                et_id.setText(user.id)
-                et_pw.setText(user.password)
+                binding.etId.setText(user.id)
+                binding.etPw.setText(user.password)
             }
         })
     }

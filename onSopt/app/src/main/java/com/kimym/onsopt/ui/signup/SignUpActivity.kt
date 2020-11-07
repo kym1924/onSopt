@@ -12,16 +12,16 @@ import com.kimym.onsopt.room.UserDatabase
 import com.kimym.onsopt.ui.signin.SignInActivity
 import com.kimym.onsopt.util.showToast
 import com.kimym.onsopt.util.textChangedListener
-import kotlinx.android.synthetic.main.activity_sign_up.*
 
 class SignUpActivity : AppCompatActivity() {
 
     private val signUpViewModel : SignUpViewModel by viewModels()
+    lateinit var binding : ActivitySignUpBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val binding : ActivitySignUpBinding = DataBindingUtil.setContentView(this, R.layout.activity_sign_up)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_sign_up)
         binding.signUpViewModel = signUpViewModel
         binding.lifecycleOwner = this
 
@@ -29,19 +29,20 @@ class SignUpActivity : AppCompatActivity() {
         signUpViewModel.initDao(userDao)
     }
 
-    override fun onResume(){
+    override fun onResume() {
         super.onResume()
 
-        et_pw.textChangedListener{ signUpViewModel.checkPassword(et_pw.text.toString(), et_pw_check.text.toString()) }
+        binding.etPw.textChangedListener { signUpViewModel.checkPassword(binding.etPw.text.toString(), binding.etPwCheck.text.toString()) }
 
-        et_pw_check.textChangedListener { signUpViewModel.checkPassword(et_pw.text.toString(), et_pw_check.text.toString()) }
+        binding.etPwCheck.textChangedListener { signUpViewModel.checkPassword(binding.etPw.text.toString(), binding.etPwCheck.text.toString()) }
 
-        signUpViewModel.isValid.observe(this, Observer { it ->
-            it.let { if(it) signUpViewModel.insert() else showToast("입력하신정보를확인하세요.")} })
+        signUpViewModel.isValid.observe(this, Observer { isValid ->
+            isValid.let { if(isValid) signUpViewModel.insert() else showToast("입력하신정보를확인하세요.")}
+        })
 
-        signUpViewModel.isSuccess.observe(this, Observer { it ->
-            it.let {
-                if(it) {
+        signUpViewModel.isSuccess.observe(this, Observer { isSuccess ->
+            isSuccess.let {
+                if(isSuccess) {
                     showToast("회원가입완료")
                     val intent = Intent(this, SignInActivity::class.java)
                     setResult(RESULT_OK, intent)
