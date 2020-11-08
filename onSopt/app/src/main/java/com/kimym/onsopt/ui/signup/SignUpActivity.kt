@@ -32,9 +32,9 @@ class SignUpActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
 
-        binding.etPw.textChangedListener { signUpViewModel.checkPassword(binding.etPw.text.toString(), binding.etPwCheck.text.toString()) }
+        binding.etPw.textChangedListener { signUpViewModel.checkPassword() }
 
-        binding.etPwCheck.textChangedListener { signUpViewModel.checkPassword(binding.etPw.text.toString(), binding.etPwCheck.text.toString()) }
+        binding.etPwCheck.textChangedListener { signUpViewModel.checkPassword() }
 
         signUpViewModel.isValid.observe(this, Observer { isValid ->
             isValid.let { if(isValid) signUpViewModel.insert() else showToast("입력하신정보를확인하세요.")}

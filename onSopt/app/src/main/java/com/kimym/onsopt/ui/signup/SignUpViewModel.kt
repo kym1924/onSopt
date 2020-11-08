@@ -14,6 +14,7 @@ class SignUpViewModel : ViewModel() {
     val name = MutableLiveData<String>("")
     val id = MutableLiveData<String>("")
     val password = MutableLiveData<String>("")
+    val passwordCheck = MutableLiveData<String>("")
 
     private val _isSamePassword = MutableLiveData<Boolean>(false)
     val isSamePassword : LiveData<Boolean>
@@ -33,13 +34,12 @@ class SignUpViewModel : ViewModel() {
         userDao = dao
     }
 
-    fun checkPassword(password : String, passwordCheck : String) {
-        _isSamePassword.value = (password == passwordCheck && !password.isNullOrEmpty())
+    fun checkPassword() {
+        _isSamePassword.value = (password.value == passwordCheck.value && !password.value.isNullOrEmpty())
     }
 
     fun validation() {
-        _isValid.value = (!name.value.isNullOrEmpty() && !id.value.isNullOrEmpty() &&
-                !password.value.isNullOrEmpty() && _isSamePassword.value!!)
+        _isValid.value = (!name.value.isNullOrEmpty() && !id.value.isNullOrEmpty() && _isSamePassword.value!!)
     }
 
     fun insert() = viewModelScope.launch(Dispatchers.IO) {
