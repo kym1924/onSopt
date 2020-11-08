@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.Observer
 import com.kimym.onsopt.R
 import com.kimym.onsopt.databinding.FragmentHomeBinding
 import com.kimym.onsopt.room.UserDatabase
@@ -38,10 +37,11 @@ class HomeFragment : Fragment() {
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
         binding.homeViewModel = homeViewModel
+        binding.lifecycleOwner = this
         return binding.root
     }
 
-    override fun onStart(){
+    override fun onStart() {
         super.onStart()
 
         binding.vpHome.adapter = HomePagerAdapter(childFragmentManager)
@@ -50,9 +50,5 @@ class HomeFragment : Fragment() {
             getTabAt(0)?.text = "INFO"
             getTabAt(1)?.text = "OTHER"
         }
-
-        homeViewModel.myName.observe(this, Observer{ myName ->
-            myName?.let{ binding.tvName.text = myName }
-        })
     }
 }
