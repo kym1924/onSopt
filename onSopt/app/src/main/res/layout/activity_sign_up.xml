@@ -40,7 +40,7 @@
             android:hint="@string/hint_name"
             android:text="@={signUpViewModel.name}"
             android:padding="10dp"
-            android:background="@drawable/background_edit_text"
+            ifActive="@{signUpViewModel.name}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@id/tv_name"
             app:layout_constraintTop_toBottomOf="@id/tv_name" />
@@ -67,7 +67,7 @@
             android:hint="@string/hint_id"
             android:text="@={signUpViewModel.id}"
             android:padding="10dp"
-            android:background="@drawable/background_edit_text"
+            ifActive="@{signUpViewModel.id}"
             app:layout_constraintEnd_toEndOf="@id/et_name"
             app:layout_constraintStart_toStartOf="@id/et_name"
             app:layout_constraintTop_toBottomOf="@id/tv_id" />
@@ -94,7 +94,7 @@
             android:hint="@string/hint_password"
             android:text="@={signUpViewModel.password}"
             android:padding="10dp"
-            android:background="@drawable/background_edit_text"
+            ifActive="@{signUpViewModel.password}"
             app:layout_constraintEnd_toEndOf="@id/et_name"
             app:layout_constraintStart_toStartOf="@id/et_name"
             app:layout_constraintTop_toBottomOf="@id/tv_pw" />
@@ -121,7 +121,7 @@
             android:hint="@string/hint_password_check"
             android:text="@={signUpViewModel.passwordCheck}"
             android:padding="10dp"
-            android:background="@drawable/background_edit_text"
+            ifActive="@{signUpViewModel.passwordCheck}"
             app:layout_constraintEnd_toEndOf="@id/et_name"
             app:layout_constraintStart_toStartOf="@id/et_name"
             app:layout_constraintTop_toBottomOf="@id/tv_pw_check" />
