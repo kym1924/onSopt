@@ -26,6 +26,7 @@ class SignInActivity : AppCompatActivity() {
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_sign_in)
         binding.signInViewModel = signInViewModel
+        binding.lifecycleOwner = this
 
         val sharedPref = getSharedPreferences("pref", Context.MODE_PRIVATE)
         val userDao = UserDatabase.getDatabase(this).userDao()
@@ -60,16 +61,5 @@ class SignInActivity : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
         if(requestCode == 1 && resultCode == Activity.RESULT_OK)
             signInViewModel.fromSignUp()
-    }
-
-    override fun onRestart() {
-        super.onRestart()
-
-        signInViewModel.fromSignUp.observe(this, Observer { user ->
-            user?.let{
-                binding.etId.setText(user.id)
-                binding.etPw.setText(user.password)
-            }
-        })
     }
 }
