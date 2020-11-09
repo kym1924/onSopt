@@ -46,9 +46,5 @@ class HomeFragment : Fragment() {
 
         binding.vpHome.adapter = HomePagerAdapter(childFragmentManager)
         binding.tabLayout.setupWithViewPager(binding.vpHome)
-        binding.tabLayout.apply{
-            getTabAt(0)?.text = "INFO"
-            getTabAt(1)?.text = "OTHER"
-        }
     }
 }

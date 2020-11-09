@@ -15,6 +15,10 @@ class HomeViewModel : ViewModel() {
     val myName : LiveData<String>
         get() = _myName
 
+    private val _tabItems = MutableLiveData<String>("INFO OTHER")
+    val tabItems : LiveData<String>
+        get() = _tabItems
+
     private lateinit var userDao : UserDao
     private lateinit var sharedPref : SharedPreferences
     private lateinit var sharedEdit : SharedPreferences.Editor
