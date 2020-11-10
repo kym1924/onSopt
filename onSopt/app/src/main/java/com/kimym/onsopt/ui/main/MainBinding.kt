@@ -4,7 +4,7 @@ import androidx.databinding.BindingAdapter
 import androidx.fragment.app.FragmentManager
 import androidx.viewpager.widget.ViewPager
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.kimym.onsopt.util.addViewPagerListener
+import com.kimym.onsopt.util.addMainPagerListener
 import com.kimym.onsopt.util.setBottomNavigationListener
 
 object MainBinding {
@@ -23,6 +23,6 @@ object MainBinding {
     @BindingAdapter("viewPagerListener")
     @JvmStatic
     fun viewPagerListener(viewPager : ViewPager, bottomNavigationView : BottomNavigationView) {
-        viewPager.addViewPagerListener(bottomNavigationView)
+        viewPager.addMainPagerListener(bottomNavigationView)
     }
 }
