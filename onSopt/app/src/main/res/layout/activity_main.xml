@@ -11,6 +11,9 @@
         <variable
             name="viewPager"
             type="androidx.viewpager.widget.ViewPager"/>
+        <variable
+            name="bottomNavigationView"
+            type="com.google.android.material.bottomnavigation.BottomNavigationView"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -23,6 +26,7 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             mainAdapter="@{fragmentManager}"
+            viewPagerListener="@{bottomNavigationView}"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toTopOf="@id/bottom_navigation"
             app:layout_constraintStart_toStartOf="parent"
