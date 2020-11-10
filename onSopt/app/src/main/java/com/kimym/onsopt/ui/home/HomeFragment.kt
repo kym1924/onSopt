@@ -39,7 +39,8 @@ class HomeFragment : Fragment() {
         binding.homeViewModel = homeViewModel
         binding.fragmentManager = childFragmentManager
         binding.viewPager = binding.vpHome
-        binding.lifecycleOwner = this
+        binding.bindingTabLayout = binding.tabLayout
+        binding.lifecycleOwner = this@HomeFragment
         return binding.root
     }
 }

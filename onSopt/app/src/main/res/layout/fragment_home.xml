@@ -14,6 +14,9 @@
         <variable
             name="viewPager"
             type="androidx.viewpager.widget.ViewPager"/>
+        <variable
+            name="bindingTabLayout"
+            type="com.google.android.material.tabs.TabLayout"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -61,6 +64,7 @@
             android:id="@+id/vp_home"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            setUpWithViewPager="@{bindingTabLayout}"
             homeAdapter="@{fragmentManager}"
             app:layout_constraintTop_toBottomOf="@id/tab_layout"
             app:layout_constraintBottom_toBottomOf="parent"
