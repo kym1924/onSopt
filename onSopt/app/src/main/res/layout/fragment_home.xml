@@ -8,7 +8,9 @@
         <variable
             name="homeViewModel"
             type="com.kimym.onsopt.ui.home.HomeViewModel"/>
-
+        <variable
+            name="fragmentManager"
+            type="androidx.fragment.app.FragmentManager"/>
         <variable
             name="viewPager"
             type="androidx.viewpager.widget.ViewPager"/>
@@ -59,6 +61,7 @@
             android:id="@+id/vp_home"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            homeAdapter="@{fragmentManager}"
             app:layout_constraintTop_toBottomOf="@id/tab_layout"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@id/tab_layout"
