@@ -70,7 +70,6 @@
             android:layout_height="wrap_content"
             android:background="@color/black"
             app:tabSelectedTextColor="@color/yellow"
-            setUpViewPager="@{viewPager}"
             setTabItems="@{homeViewModel.tabItems}"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"

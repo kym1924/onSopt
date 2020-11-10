@@ -41,10 +41,4 @@ class HomeFragment : Fragment() {
         binding.lifecycleOwner = this
         return binding.root
     }
-
-    override fun onStart() {
-        super.onStart()
-
-        binding.vpHome.adapter = HomePagerAdapter(childFragmentManager)
-    }
 }
