@@ -5,6 +5,7 @@ import androidx.databinding.BindingAdapter
 import androidx.fragment.app.FragmentManager
 import androidx.viewpager.widget.ViewPager
 import com.google.android.material.tabs.TabLayout
+import com.kimym.onsopt.util.addTabLayoutListener
 
 object HomeBinding {
     @BindingAdapter("setMyName")
@@ -17,6 +18,12 @@ object HomeBinding {
     @JvmStatic
     fun homeAdapter(viewPager : ViewPager, fragmentManager : FragmentManager) {
         viewPager.adapter = HomePagerAdapter(fragmentManager)
+    }
+
+    @BindingAdapter("setTabListener")
+    @JvmStatic
+    fun setTabListener(tabLayout : TabLayout, viewPager : ViewPager) {
+        tabLayout.addTabLayoutListener(viewPager)
     }
 
     @BindingAdapter("setTabItems")
