@@ -8,6 +8,10 @@
         <variable
             name="homeViewModel"
             type="com.kimym.onsopt.ui.home.HomeViewModel"/>
+
+        <variable
+            name="viewPager"
+            type="androidx.viewpager.widget.ViewPager"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -51,18 +55,6 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <com.google.android.material.tabs.TabLayout
-            android:id="@+id/tab_layout"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:background="@color/black"
-            app:tabSelectedTextColor="@color/yellow"
-            setTabItems="@{homeViewModel.tabItems}"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
-
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/vp_home"
             android:layout_width="0dp"
@@ -71,6 +63,19 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@id/tab_layout"
             app:layout_constraintEnd_toEndOf="@id/tab_layout"/>
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tab_layout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/black"
+            app:tabSelectedTextColor="@color/yellow"
+            setUpViewPager="@{viewPager}"
+            setTabItems="@{homeViewModel.tabItems}"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
