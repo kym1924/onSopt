@@ -6,7 +6,6 @@ import androidx.databinding.DataBindingUtil
 import com.kimym.onsopt.R
 import com.kimym.onsopt.databinding.ActivityMainBinding
 import com.kimym.onsopt.util.addViewPagerListener
-import com.kimym.onsopt.util.setBottomNavigationListener
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -15,6 +14,7 @@ class MainActivity : AppCompatActivity() {
         val binding : ActivityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         binding.apply{
             fragmentManager = supportFragmentManager
+            viewPager = binding.vpMain
             lifecycleOwner = this@MainActivity
         }
     }
@@ -23,6 +23,5 @@ class MainActivity : AppCompatActivity() {
         super.onStart()
 
         vp_main.addViewPagerListener(bottom_navigation)
-        bottom_navigation.setBottomNavigationListener(vp_main)
     }
 }

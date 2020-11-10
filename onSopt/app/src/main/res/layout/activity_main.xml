@@ -8,6 +8,9 @@
         <variable
             name="fragmentManager"
             type="androidx.fragment.app.FragmentManager"/>
+        <variable
+            name="viewPager"
+            type="androidx.viewpager.widget.ViewPager"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -36,7 +39,8 @@
             app:menu="@menu/bottom_menu"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_constraintBottom_toBottomOf="parent"
+            bottomListener="@{viewPager}"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
