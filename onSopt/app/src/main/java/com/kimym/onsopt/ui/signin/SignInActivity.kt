@@ -35,7 +35,7 @@ class SignInActivity : AppCompatActivity() {
         signInViewModel.autoLogin.observe(this, Observer { autoLogin ->
             autoLogin.let {
                 if(autoLogin) {
-                showToast("자동로그인")
+                showToast("AutoLogin")
                 startActivity<MainActivity>() }
             }
         })
@@ -47,7 +47,7 @@ class SignInActivity : AppCompatActivity() {
         signInViewModel.isLogin.observe(this, Observer { isLogin ->
             isLogin?.let {
                 if(isLogin) startActivity<MainActivity>()
-                else showToast("입력하신정보를확인하세요.")
+                else showToast("Invalid Information.")
             }
         })
 

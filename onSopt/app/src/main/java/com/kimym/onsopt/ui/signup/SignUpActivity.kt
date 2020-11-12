@@ -37,13 +37,13 @@ class SignUpActivity : AppCompatActivity() {
         binding.etPwCheck.textChangedListener { signUpViewModel.checkPassword() }
 
         signUpViewModel.isValid.observe(this, Observer { isValid ->
-            isValid.let { if(isValid) signUpViewModel.insert() else showToast("입력하신정보를확인하세요.")}
+            isValid.let { if(isValid) signUpViewModel.insert() else showToast("Invalid Information")}
         })
 
         signUpViewModel.isSuccess.observe(this, Observer { isSuccess ->
             isSuccess.let {
                 if(isSuccess) {
-                    showToast("회원가입완료")
+                    showToast("Success")
                     val intent = Intent(this, SignInActivity::class.java)
                     setResult(RESULT_OK, intent)
                     finish()
