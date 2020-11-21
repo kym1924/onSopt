@@ -44,8 +44,9 @@
             android:layout_marginTop="60dp"
             android:text="@string/id"
             android:textColor="@color/yellow"
-            android:textStyle="bold"
             android:textSize="20sp"
+            android:fontFamily="@font/cairo"
+            android:textFontWeight="700"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/img_logo" />
 
@@ -60,6 +61,8 @@
             android:importantForAutofill="no"
             android:text="@={signInViewModel.id}"
             android:padding="12dp"
+            android:fontFamily="@font/cairo"
+            android:textFontWeight="400"
             fromSignUp="@{signInViewModel.fromSignUp.id}"
             ifActive="@{signInViewModel.id}"
             app:layout_constraintEnd_toEndOf="parent"
@@ -73,8 +76,9 @@
             android:layout_marginTop="20dp"
             android:text="@string/password"
             android:textColor="@color/yellow"
-            android:textStyle="bold"
             android:textSize="20sp"
+            android:fontFamily="@font/cairo"
+            android:textFontWeight="700"
             app:layout_constraintStart_toStartOf="@id/tv_id"
             app:layout_constraintTop_toBottomOf="@id/et_id" />
 
@@ -88,6 +92,8 @@
             android:importantForAutofill="no"
             android:text="@={signInViewModel.password}"
             android:padding="12dp"
+            android:fontFamily="@font/cairo"
+            android:textFontWeight="400"
             fromSignUp="@{signInViewModel.fromSignUp.password}"
             ifActive="@{signInViewModel.password}"
             app:layout_constraintEnd_toEndOf="@id/et_id"
@@ -102,6 +108,8 @@
             android:text="@string/move_register"
             android:textSize="16sp"
             android:textColor="@color/yellow"
+            android:fontFamily="@font/cairo"
+            android:textFontWeight="600"
             app:layout_constraintStart_toStartOf="@id/et_pw"
             app:layout_constraintEnd_toEndOf="@id/et_pw"
             app:layout_constraintTop_toBottomOf="@id/et_pw" />
@@ -112,6 +120,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:text="@string/login"
+            android:fontFamily="@font/cairo"
+            android:textFontWeight="600"
             android:background="@drawable/background_button"
             android:onClick="@{() -> signInViewModel.validation()}"
             app:layout_constraintEnd_toEndOf="@id/et_pw"

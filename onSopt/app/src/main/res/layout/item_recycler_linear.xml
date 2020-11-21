@@ -34,6 +34,8 @@
             android:text="@{user.id}"
             android:textSize="16sp"
             android:textColor="@color/black"
+            android:fontFamily="@font/cairo"
+            android:textFontWeight="600"
             app:layout_constraintTop_toTopOf="@id/img_recycler_logo"
             app:layout_constraintBottom_toBottomOf="@id/img_recycler_logo"
             app:layout_constraintStart_toEndOf="@id/img_recycler_logo"/>
@@ -46,6 +48,8 @@
             android:text="@{user.name}"
             android:textSize="16sp"
             android:textColor="@color/black"
+            android:fontFamily="@font/cairo"
+            android:textFontWeight="600"
             app:layout_constraintTop_toTopOf="@id/img_recycler_logo"
             app:layout_constraintBottom_toBottomOf="@id/img_recycler_logo"
             app:layout_constraintStart_toStartOf="@id/tv_user_id" />
