@@ -27,12 +27,12 @@ class RecyclerAdapter<B : ViewDataBinding>(private val context : Context) : Recy
         holder.bind(users[position])
     }
 
-    internal fun setUsers(users : List<User>) {
+    fun setUsers(users : List<User>) {
         this.users = users
         notifyDataSetChanged()
     }
 
-    internal fun setLayout(layoutItem : Int) {
+    fun setLayout(layoutItem : Int) {
         this.layoutItem = layoutItem
     }
 

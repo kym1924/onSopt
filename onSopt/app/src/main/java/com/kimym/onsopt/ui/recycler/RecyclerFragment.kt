@@ -20,7 +20,7 @@ class RecyclerFragment : Fragment() {
 
     private val recyclerViewModel : RecyclerViewModel by activityViewModels()
     private var userList = mutableListOf<User>()
-    lateinit var adapter : RecyclerAdapter<ItemRecyclerLinearBinding>
+    private lateinit var adapter : RecyclerAdapter<ItemRecyclerLinearBinding>
     lateinit var binding : FragmentRecyclerBinding
 
     override fun onAttach(context: Context) {
@@ -47,11 +47,7 @@ class RecyclerFragment : Fragment() {
         super.onStart()
 
         recyclerViewModel.allUsers.observe(this, Observer { allUsers ->
-            allUsers?.let {
-                adapter.setUsers(allUsers)
-                recyclerViewModel.resetList(userList, allUsers)
-            }
-        })
+            allUsers?.let { recyclerViewModel.resetList(userList, allUsers) } })
 
         recyclerViewModel.layoutItem.observe(this, Observer { layoutItem ->
             layoutItem?.let {
