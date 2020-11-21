@@ -36,7 +36,7 @@ object HomeBinding {
     @BindingAdapter("setTabItems")
     @JvmStatic
     fun setTabItems(tabLayout : TabLayout, tabItems : String) {
-        tabLayout.addTab(tabLayout.newTab().setText(tabItems.split(" ")[0])) ;
-        tabLayout.addTab(tabLayout.newTab().setText(tabItems.split(" ")[1])) ;
+        tabLayout.addTab(tabLayout.newTab().setText(tabItems.split(" ")[0]))
+        tabLayout.addTab(tabLayout.newTab().setText(tabItems.split(" ")[1]))
     }
 }
