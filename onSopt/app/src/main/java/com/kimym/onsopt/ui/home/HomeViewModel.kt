@@ -26,6 +26,7 @@ class HomeViewModel : ViewModel() {
     fun init(sharedPreferences : SharedPreferences, dao : UserDao) {
         sharedPref = sharedPreferences
         sharedEdit = sharedPref.edit()
+        sharedEdit.apply()
         userDao = dao
     }
 

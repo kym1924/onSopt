@@ -34,6 +34,7 @@ class SignInViewModel : ViewModel() {
     fun init(sharedPreferences : SharedPreferences, dao : UserDao) {
         sharedPref = sharedPreferences
         sharedEdit = sharedPref.edit()
+        sharedEdit.apply()
         userDao = dao
         this.autoLogin()
     }

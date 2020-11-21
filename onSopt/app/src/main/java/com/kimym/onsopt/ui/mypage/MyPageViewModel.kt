@@ -26,6 +26,7 @@ class MyPageViewModel : ViewModel() {
         _logout.value = false
         sharedPref = sharedPreferences
         sharedEdit = sharedPref.edit()
+        sharedEdit.apply()
         userDao = dao
     }
 
