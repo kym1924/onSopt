@@ -12,7 +12,6 @@
     <string name="move_register">Register</string>
     <string name="register">SignUp</string>
     <string name="login">SignIn</string>
-    <string name="logout">Logout</string>
     <string name="home">Home</string>
     <string name="user">User</string>
     <string name="myPage">MyPage</string>
