@@ -41,6 +41,15 @@ class SignInActivity : AppCompatActivity() {
         })
     }
 
+    override fun onStart() {
+        super.onStart()
+
+        binding.imgLogo.animate().apply{
+            duration = 2000
+            rotation(360f)
+        }.start()
+    }
+
     override fun onResume() {
         super.onResume()
 
