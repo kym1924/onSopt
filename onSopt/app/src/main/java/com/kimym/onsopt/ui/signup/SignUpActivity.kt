@@ -8,7 +8,6 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import com.kimym.onsopt.R
 import com.kimym.onsopt.databinding.ActivitySignUpBinding
-import com.kimym.onsopt.room.UserDatabase
 import com.kimym.onsopt.ui.signin.SignInActivity
 import com.kimym.onsopt.util.showToast
 import com.kimym.onsopt.util.textChangedListener
@@ -24,9 +23,6 @@ class SignUpActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_sign_up)
         binding.signUpViewModel = signUpViewModel
         binding.lifecycleOwner = this
-
-        val userDao = UserDatabase.getDatabase(this).userDao()
-        signUpViewModel.initDao(userDao)
     }
 
     override fun onResume() {
@@ -35,10 +31,6 @@ class SignUpActivity : AppCompatActivity() {
         binding.etPw.textChangedListener { signUpViewModel.checkPassword() }
 
         binding.etPwCheck.textChangedListener { signUpViewModel.checkPassword() }
-
-        signUpViewModel.isValid.observe(this, Observer { isValid ->
-            isValid.let { if(isValid) signUpViewModel.insert() else showToast("Invalid Information")}
-        })
 
         signUpViewModel.isSuccess.observe(this, Observer { isSuccess ->
             isSuccess.let {

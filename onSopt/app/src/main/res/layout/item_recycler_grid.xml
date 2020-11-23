@@ -3,12 +3,6 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <data>
-        <variable
-            name="user"
-            type="com.kimym.onsopt.room.User" />
-    </data>
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:background="@color/white"
         android:padding="8dp"
@@ -20,7 +14,6 @@
             android:id="@+id/img_recycler_logo"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:src="@drawable/logo"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="ContentDescription" />
@@ -30,7 +23,6 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="@{user.id}"
             android:textSize="16sp"
             android:textColor="@color/black"
             android:fontFamily="@font/cairo"
@@ -44,7 +36,6 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="@{user.name}"
             android:textSize="16sp"
             android:textColor="@color/black"
             android:fontFamily="@font/cairo"

@@ -1,9 +1,8 @@
 <resources>
     <string name="app_name">SOPT27</string>
-    <string name="title">27th\nON SOPT</string>
-    <string name="id">Id</string>
+    <string name="email">Email</string>
     <string name="password">Password</string>
-    <string name="hint_id">id</string>
+    <string name="hint_email">email</string>
     <string name="hint_password">password</string>
     <string name="name">Name</string>
     <string name="hint_name">name</string>
@@ -12,10 +11,7 @@
     <string name="move_register">Register</string>
     <string name="register">SignUp</string>
     <string name="login">SignIn</string>
-    <string name="home">Home</string>
     <string name="user">User</string>
+    <string name="web">Web</string>
     <string name="myPage">MyPage</string>
-    <string name="info">info</string>
-    <string name="other">other</string>
-    <string name="welcome">Welcome</string>
 </resources>

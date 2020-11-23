@@ -4,17 +4,9 @@ import android.content.SharedPreferences
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
-import com.kimym.onsopt.room.User
-import com.kimym.onsopt.room.UserDao
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 
 class MyPageViewModel : ViewModel() {
 
-    lateinit var my : User
-
-    private lateinit var userDao : UserDao
     private lateinit var sharedPref : SharedPreferences
     private lateinit var sharedEdit : SharedPreferences.Editor
 
@@ -22,16 +14,11 @@ class MyPageViewModel : ViewModel() {
     val logout : LiveData<Boolean>
         get() = _logout
 
-    fun init(sharedPreferences : SharedPreferences, dao : UserDao) {
+    fun init(sharedPreferences : SharedPreferences) {
         _logout.value = false
         sharedPref = sharedPreferences
         sharedEdit = sharedPref.edit()
         sharedEdit.apply()
-        userDao = dao
-    }
-
-    fun getMy() = viewModelScope.launch(Dispatchers.IO) {
-        my = userDao.getMy(sharedPref.getString("id", "")!!)
     }
 
     fun logout() {

@@ -50,12 +50,12 @@
             app:layout_constraintTop_toBottomOf="@id/tv_name" />
 
         <TextView
-            android:id="@+id/tv_id"
+            android:id="@+id/tv_email"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="40dp"
             android:layout_marginTop="32dp"
-            android:text="@string/id"
+            android:text="@string/email"
             android:textColor="@color/yellow"
             android:textSize="20sp"
             android:fontFamily="@font/cairo"
@@ -64,21 +64,21 @@
             app:layout_constraintTop_toBottomOf="@id/et_name" />
 
         <EditText
-            android:id="@+id/et_id"
+            android:id="@+id/et_email"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:inputType="text"
-            android:hint="@string/hint_id"
+            android:hint="@string/hint_email"
             android:importantForAutofill="no"
-            android:text="@={signUpViewModel.id}"
+            android:text="@={signUpViewModel.email}"
             android:padding="12dp"
             android:fontFamily="@font/cairo"
             android:textFontWeight="400"
-            ifActive="@{signUpViewModel.id}"
+            ifActive="@{signUpViewModel.email}"
             app:layout_constraintEnd_toEndOf="@id/et_name"
             app:layout_constraintStart_toStartOf="@id/et_name"
-            app:layout_constraintTop_toBottomOf="@id/tv_id" />
+            app:layout_constraintTop_toBottomOf="@id/tv_email" />
 
         <TextView
             android:id="@+id/tv_pw"
@@ -92,7 +92,7 @@
             android:fontFamily="@font/cairo"
             android:textFontWeight="700"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/et_id" />
+            app:layout_constraintTop_toBottomOf="@id/et_email" />
 
         <EditText
             android:id="@+id/et_pw"

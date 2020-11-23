@@ -37,12 +37,12 @@
             app:layout_constraintGuide_percent="0.35"/>
 
         <TextView
-            android:id="@+id/tv_id"
+            android:id="@+id/tv_email"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="40dp"
             android:layout_marginTop="60dp"
-            android:text="@string/id"
+            android:text="@string/email"
             android:textColor="@color/yellow"
             android:textSize="20sp"
             android:fontFamily="@font/cairo"
@@ -51,23 +51,22 @@
             app:layout_constraintTop_toBottomOf="@id/img_logo" />
 
         <EditText
-            android:id="@+id/et_id"
+            android:id="@+id/et_email"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
             android:layout_marginEnd="40dp"
-            android:inputType="text"
-            android:hint="@string/hint_id"
+            android:inputType="textEmailAddress"
+            android:hint="@string/hint_email"
             android:importantForAutofill="no"
-            android:text="@={signInViewModel.id}"
+            android:text="@={signInViewModel.email}"
             android:padding="12dp"
             android:fontFamily="@font/cairo"
             android:textFontWeight="400"
-            fromSignUp="@{signInViewModel.fromSignUp.id}"
-            ifActive="@{signInViewModel.id}"
+            ifActive="@{signInViewModel.email}"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@id/tv_id"
-            app:layout_constraintTop_toBottomOf="@id/tv_id" />
+            app:layout_constraintStart_toStartOf="@id/tv_email"
+            app:layout_constraintTop_toBottomOf="@id/tv_email" />
 
         <TextView
             android:id="@+id/tv_pw"
@@ -79,8 +78,8 @@
             android:textSize="20sp"
             android:fontFamily="@font/cairo"
             android:textFontWeight="700"
-            app:layout_constraintStart_toStartOf="@id/tv_id"
-            app:layout_constraintTop_toBottomOf="@id/et_id" />
+            app:layout_constraintStart_toStartOf="@id/tv_email"
+            app:layout_constraintTop_toBottomOf="@id/et_email" />
 
         <EditText
             android:id="@+id/et_pw"
@@ -94,10 +93,9 @@
             android:padding="12dp"
             android:fontFamily="@font/cairo"
             android:textFontWeight="400"
-            fromSignUp="@{signInViewModel.fromSignUp.password}"
             ifActive="@{signInViewModel.password}"
-            app:layout_constraintEnd_toEndOf="@id/et_id"
-            app:layout_constraintStart_toStartOf="@id/tv_id"
+            app:layout_constraintEnd_toEndOf="@id/et_email"
+            app:layout_constraintStart_toStartOf="@id/tv_email"
             app:layout_constraintTop_toBottomOf="@id/tv_pw" />
 
         <TextView
@@ -123,7 +121,6 @@
             android:fontFamily="@font/cairo"
             android:textFontWeight="600"
             android:background="@drawable/background_button"
-            android:onClick="@{() -> signInViewModel.validation()}"
             app:layout_constraintEnd_toEndOf="@id/et_pw"
             app:layout_constraintStart_toStartOf="@id/et_pw"
             app:layout_constraintTop_toBottomOf="@id/tv_register" />

@@ -6,9 +6,6 @@
 
     <data>
         <variable
-            name="my"
-            type="com.kimym.onsopt.room.User"/>
-        <variable
             name="myPageViewModel"
             type="com.kimym.onsopt.ui.mypage.MyPageViewModel"/>
     </data>
@@ -43,7 +40,6 @@
             android:id="@+id/tv_id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{my.id}"
             android:textSize="20sp"
             android:textColor="@color/yellow"
             android:fontFamily="@font/cairo"
@@ -57,7 +53,6 @@
             android:id="@+id/tv_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{my.name}"
             android:textSize="20sp"
             android:textColor="@color/yellow"
             android:fontFamily="@font/cairo"
@@ -71,7 +66,6 @@
             android:id="@+id/tv_part"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{my.part}"
             android:textSize="20sp"
             android:textColor="@color/yellow"
             android:fontFamily="@font/cairo"
@@ -85,7 +79,6 @@
             android:id="@+id/tv_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{my.date}"
             android:textSize="20sp"
             android:textColor="@color/yellow"
             android:fontFamily="@font/cairo"
