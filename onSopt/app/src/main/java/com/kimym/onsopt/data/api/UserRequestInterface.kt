@@ -14,6 +14,7 @@ interface UserRequestInterface {
         @Body body : RequestSignIn
     ) : ResponseUser
 
+    @Headers("Content-Type:application/json")
     @POST("/users/signup")
     suspend fun signUp(
         @Body body : RequestSignUp

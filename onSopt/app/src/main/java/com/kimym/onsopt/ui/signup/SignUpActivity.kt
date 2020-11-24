@@ -7,6 +7,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import com.kimym.onsopt.R
+import com.kimym.onsopt.data.api.RetrofitBuilder
+import com.kimym.onsopt.data.api.UserRepository
 import com.kimym.onsopt.databinding.ActivitySignUpBinding
 import com.kimym.onsopt.ui.signin.SignInActivity
 import com.kimym.onsopt.util.showToast
@@ -23,6 +25,9 @@ class SignUpActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_sign_up)
         binding.signUpViewModel = signUpViewModel
         binding.lifecycleOwner = this
+
+        val userRepository = UserRepository(RetrofitBuilder.userService)
+        signUpViewModel.init(userRepository)
     }
 
     override fun onResume() {
@@ -32,15 +37,15 @@ class SignUpActivity : AppCompatActivity() {
 
         binding.etPwCheck.textChangedListener { signUpViewModel.checkPassword() }
 
-        signUpViewModel.isSuccess.observe(this, Observer { isSuccess ->
-            isSuccess.let {
-                if(isSuccess) {
-                    showToast("Success")
-                    val intent = Intent(this, SignInActivity::class.java)
-                    setResult(RESULT_OK, intent)
-                    finish()
-                }
-            }
+        signUpViewModel.isValid.observe(this, Observer { isValid->
+            isValid?.let { if(isValid) signUpViewModel.signUp() else showToast("Invalid information") }
+        })
+
+        signUpViewModel.isSignUp.observe(this, Observer { isSignUp->
+            isSignUp?.let { if(isSignUp) {
+                setResult(1, Intent(this , SignInActivity::class.java))
+                finish()
+            } else showToast("Check information") }
         })
     }
 }
