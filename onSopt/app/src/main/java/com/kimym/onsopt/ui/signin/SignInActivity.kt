@@ -5,9 +5,15 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import com.kimym.onsopt.R
+import com.kimym.onsopt.data.api.RetrofitBuilder
+import com.kimym.onsopt.data.api.UserRepository
 import com.kimym.onsopt.databinding.ActivitySignInBinding
+import com.kimym.onsopt.ui.main.MainActivity
 import com.kimym.onsopt.ui.signup.SignUpActivity
+import com.kimym.onsopt.util.showToast
+import com.kimym.onsopt.util.startActivity
 
 class SignInActivity : AppCompatActivity() {
 
@@ -20,6 +26,21 @@ class SignInActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_sign_in)
         binding.signInViewModel = signInViewModel
         binding.lifecycleOwner = this
+
+        val userRepository = UserRepository(RetrofitBuilder.userService)
+        signInViewModel.init(userRepository)
+    }
+
+    override fun onStart() {
+        super.onStart()
+
+        signInViewModel.isValid.observe(this, Observer { isValid->
+            isValid?.let { if(isValid) signInViewModel.login() else showToast("Invalid information") }
+        })
+
+        signInViewModel.isLogin.observe(this, Observer { isLogin->
+            isLogin?.let { if(isLogin) { startActivity<MainActivity>() } else showToast("fail") }
+        })
     }
 
     override fun onResume() {
