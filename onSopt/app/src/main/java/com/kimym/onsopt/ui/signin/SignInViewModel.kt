@@ -17,9 +17,9 @@ class SignInViewModel : ViewModel() {
     val email = MutableLiveData<String>("")
     val password = MutableLiveData<String>("")
 
-    private val _isLogin = MutableLiveData<Boolean>()
-    val isLogin : LiveData<Boolean>
-        get() = _isLogin
+    private val _isSignIn = MutableLiveData<Boolean>()
+    val isSignIn : LiveData<Boolean>
+        get() = _isSignIn
 
     private val _isValid = MutableLiveData<Boolean>()
     val isValid : LiveData<Boolean>
@@ -29,13 +29,13 @@ class SignInViewModel : ViewModel() {
         this.userRepository = repository
     }
 
-    fun login() = viewModelScope.launch(Dispatchers.IO) {
+    fun signIn() = viewModelScope.launch(Dispatchers.IO) {
         try {
-            val login= userRepository.requestSignIn(RequestSignIn(email = email.value!!, password = password.value!!))
-            if(login.success) _isLogin.postValue(true) }
+            val signIn= userRepository.requestSignIn(RequestSignIn(email = email.value!!, password = password.value!!))
+            if(signIn.success) _isSignIn.postValue(true) }
         catch(e : HttpException) {
             Log.d("error", e.toString())
-            _isLogin.postValue(false)
+            _isSignIn.postValue(false)
         }
     }
 

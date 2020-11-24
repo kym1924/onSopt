@@ -35,11 +35,11 @@ class SignInActivity : AppCompatActivity() {
         super.onStart()
 
         signInViewModel.isValid.observe(this, Observer { isValid->
-            isValid?.let { if(isValid) signInViewModel.login() else showToast("Invalid information") }
+            isValid?.let { if(isValid) signInViewModel.signIn() else showToast("Invalid information") }
         })
 
-        signInViewModel.isLogin.observe(this, Observer { isLogin->
-            isLogin?.let { if(isLogin) { startActivity<MainActivity>() } else showToast("fail") }
+        signInViewModel.isSignIn.observe(this, Observer { isSignIn->
+            isSignIn?.let { if(isSignIn) { startActivity<MainActivity>() } else showToast("fail") }
         })
     }
 
