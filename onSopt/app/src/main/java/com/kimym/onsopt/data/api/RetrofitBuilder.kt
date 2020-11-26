@@ -9,4 +9,10 @@ object RetrofitBuilder {
         .build()
 
     var userService : UserRequestInterface = userRetrofit.create(UserRequestInterface::class.java)
+
+    private var dummyRetrofit : Retrofit = Retrofit.Builder().baseUrl("https://reqres.in/api/")
+        .addConverterFactory(GsonConverterFactory.create())
+        .build()
+
+    var dummyService : DummyRequestInterface = dummyRetrofit.create(DummyRequestInterface::class.java)
 }
