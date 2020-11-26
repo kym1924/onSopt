@@ -24,9 +24,13 @@ class DummyAdapter<B : ViewDataBinding> : RecyclerView.Adapter<DummyAdapter<B>.V
         holder.bind(users[position])
     }
 
-    internal fun setUsers(list : List<DummyUserInfo>) {
+    fun setUsers(list : List<DummyUserInfo>) {
         this.users = list
         notifyDataSetChanged()
+    }
+
+    fun setLayout(layoutItem : Int){
+        this.layoutItem = layoutItem
     }
 
     inner class VHolder<B : ViewDataBinding>(itemView : View) : RecyclerView.ViewHolder(itemView) {
