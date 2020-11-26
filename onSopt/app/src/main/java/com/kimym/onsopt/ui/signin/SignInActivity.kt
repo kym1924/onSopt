@@ -8,7 +8,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import com.kimym.onsopt.R
 import com.kimym.onsopt.data.api.RetrofitBuilder
-import com.kimym.onsopt.data.api.UserRepository
+import com.kimym.onsopt.data.api.user.UserRepository
 import com.kimym.onsopt.databinding.ActivitySignInBinding
 import com.kimym.onsopt.ui.main.MainActivity
 import com.kimym.onsopt.ui.signup.SignUpActivity
@@ -27,7 +27,8 @@ class SignInActivity : AppCompatActivity() {
         binding.signInViewModel = signInViewModel
         binding.lifecycleOwner = this
 
-        val userRepository = UserRepository(RetrofitBuilder.userService)
+        val userRepository =
+            UserRepository(RetrofitBuilder.userService)
         signInViewModel.init(userRepository)
     }
 

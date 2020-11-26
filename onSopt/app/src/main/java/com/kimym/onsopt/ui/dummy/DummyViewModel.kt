@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.kimym.onsopt.R
-import com.kimym.onsopt.data.api.DummyRepository
+import com.kimym.onsopt.data.api.dummy.DummyRepository
 import com.kimym.onsopt.data.model.DummyUserInfo
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

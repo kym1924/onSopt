@@ -1,4 +1,4 @@
-package com.kimym.onsopt.data.api
+package com.kimym.onsopt.data.api.user
 
 import com.kimym.onsopt.data.model.RequestSignIn
 import com.kimym.onsopt.data.model.RequestSignUp

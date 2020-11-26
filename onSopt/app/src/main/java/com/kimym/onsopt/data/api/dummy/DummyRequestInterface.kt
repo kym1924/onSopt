@@ -1,4 +1,4 @@
-package com.kimym.onsopt.data.api
+package com.kimym.onsopt.data.api.dummy
 
 import com.kimym.onsopt.data.model.DummyUsers
 import retrofit2.http.GET

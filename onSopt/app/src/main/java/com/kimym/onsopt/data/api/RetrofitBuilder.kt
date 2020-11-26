@@ -1,5 +1,7 @@
 package com.kimym.onsopt.data.api
 
+import com.kimym.onsopt.data.api.dummy.DummyRequestInterface
+import com.kimym.onsopt.data.api.user.UserRequestInterface
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -8,11 +10,13 @@ object RetrofitBuilder {
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 
-    var userService : UserRequestInterface = userRetrofit.create(UserRequestInterface::class.java)
+    var userService : UserRequestInterface = userRetrofit.create(
+        UserRequestInterface::class.java)
 
     private var dummyRetrofit : Retrofit = Retrofit.Builder().baseUrl("https://reqres.in/api/")
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 
-    var dummyService : DummyRequestInterface = dummyRetrofit.create(DummyRequestInterface::class.java)
+    var dummyService : DummyRequestInterface = dummyRetrofit.create(
+        DummyRequestInterface::class.java)
 }

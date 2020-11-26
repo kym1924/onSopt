@@ -1,4 +1,4 @@
-package com.kimym.onsopt.data.api
+package com.kimym.onsopt.data.api.dummy
 
 class DummyRepository(private val requestInterface : DummyRequestInterface) {
 

@@ -9,8 +9,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import com.kimym.onsopt.R
-import com.kimym.onsopt.data.api.DummyRepository
 import com.kimym.onsopt.data.api.RetrofitBuilder
+import com.kimym.onsopt.data.api.dummy.DummyRepository
 import com.kimym.onsopt.databinding.FragmentDummyBinding
 import com.kimym.onsopt.databinding.ItemRecyclerLinearBinding
 
@@ -25,7 +25,8 @@ class DummyFragment : Fragment() {
         binding.dummyViewModel = dummyViewModel
         binding.lifecycleOwner = this
 
-        val dummyRepository = DummyRepository(RetrofitBuilder.dummyService)
+        val dummyRepository =
+            DummyRepository(RetrofitBuilder.dummyService)
         dummyViewModel.init(dummyRepository)
 
         val adapter = DummyAdapter<ItemRecyclerLinearBinding>()
