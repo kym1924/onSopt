@@ -21,6 +21,10 @@ class DummyViewModel : ViewModel() {
     val allUsers : LiveData<List<DummyUserInfo>>
         get() = _allUsers
 
+    private val _page = MutableLiveData<Int>(1)
+    val page : LiveData<Int>
+        get() = _page
+
     fun init(repository : DummyRepository) {
         this.dummyRepository = repository
     }
@@ -30,7 +34,8 @@ class DummyViewModel : ViewModel() {
         else _layoutItem.value = R.layout.item_recycler_linear
     }
 
-    fun getDummyUsers() = viewModelScope.launch(Dispatchers.IO) {
-        _allUsers.postValue(dummyRepository.getDummyUsers().data)
+    fun getDummyUsers(page : Int) = viewModelScope.launch(Dispatchers.IO) {
+        if(_page.value==1) _page.postValue(2) else _page.postValue(1)
+        _allUsers.postValue(dummyRepository.getDummyUsers(page).data)
     }
 }

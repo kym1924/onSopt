@@ -15,6 +15,7 @@ import com.kimym.onsopt.databinding.ItemRecyclerLinearBinding
 
 class DummyFragment : Fragment() {
     private val dummyViewModel : DummyViewModel by activityViewModels()
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -23,17 +24,25 @@ class DummyFragment : Fragment() {
         binding.dummyViewModel = dummyViewModel
         binding.lifecycleOwner = this
 
-
         val dummyRepository = DummyRepository(RetrofitBuilder.dummyService)
         dummyViewModel.init(dummyRepository)
 
         binding.rvDummy.adapter = DummyAdapter<ItemRecyclerLinearBinding>()
+
+        setSwipeListener(binding)
 
         return binding.root
     }
 
     override fun onStart() {
         super.onStart()
-        dummyViewModel.getDummyUsers()
+        dummyViewModel.getDummyUsers(dummyViewModel.page.value!!)
+    }
+
+    private fun setSwipeListener(binding : FragmentDummyBinding){
+        binding.swipeLayout.setOnRefreshListener {
+            dummyViewModel.getDummyUsers(dummyViewModel.page.value!!)
+            binding.swipeLayout.isRefreshing = false
+        }
     }
 }
