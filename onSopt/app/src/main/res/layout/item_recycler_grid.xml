@@ -3,6 +3,12 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <data>
+        <variable
+            name="dummyUser"
+            type="com.kimym.onsopt.data.model.DummyUserInfo" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:background="@color/white"
         android:padding="8dp"
@@ -11,15 +17,16 @@
         android:layout_height="wrap_content">
 
         <ImageView
-            android:id="@+id/img_recycler_logo"
+            android:id="@+id/img_user_profile"
             android:layout_width="80dp"
             android:layout_height="80dp"
+            setImage="@{dummyUser.avatar}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="ContentDescription" />
 
         <TextView
-            android:id="@+id/tv_user_id"
+            android:id="@+id/tv_user_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -27,12 +34,13 @@
             android:textColor="@color/black"
             android:fontFamily="@font/cairo"
             android:textFontWeight="600"
-            app:layout_constraintTop_toBottomOf="@id/img_recycler_logo"
-            app:layout_constraintStart_toStartOf="@id/img_recycler_logo"
-            app:layout_constraintEnd_toEndOf="@id/img_recycler_logo"/>
+            android:text="@{dummyUser.first_name}"
+            app:layout_constraintTop_toBottomOf="@id/img_user_profile"
+            app:layout_constraintStart_toStartOf="@id/img_user_profile"
+            app:layout_constraintEnd_toEndOf="@id/img_user_profile"/>
 
         <TextView
-            android:id="@+id/tv_user_name"
+            android:id="@+id/tv_user_email"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -40,9 +48,10 @@
             android:textColor="@color/black"
             android:fontFamily="@font/cairo"
             android:textFontWeight="600"
-            app:layout_constraintTop_toBottomOf="@id/tv_user_id"
-            app:layout_constraintStart_toStartOf="@id/img_recycler_logo"
-            app:layout_constraintEnd_toEndOf="@id/img_recycler_logo"/>
+            android:text="@{dummyUser.email}"
+            app:layout_constraintTop_toBottomOf="@id/tv_user_name"
+            app:layout_constraintStart_toStartOf="@id/img_user_profile"
+            app:layout_constraintEnd_toEndOf="@id/img_user_profile"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

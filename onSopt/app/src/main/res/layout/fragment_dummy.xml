@@ -1,8 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.dummy.DummyFragment">
+<layout>
 
-</FrameLayout>
+    <data>
+        <variable
+            name="dummyViewModel"
+            type="com.kimym.onsopt.ui.dummy.DummyViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/black"
+        tools:context=".ui.recycler.RecyclerFragment">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_dummy"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="28dp"
+            setUsers="@{dummyViewModel.allUsers}"
+            setLayout="@{dummyViewModel.layoutItem}"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_layout_change"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="12dp"
+            android:src="@drawable/btn_change_layout"
+            android:onClick="@{ () -> dummyViewModel.changeLayout() }"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
