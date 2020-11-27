@@ -51,6 +51,7 @@
             android:textFontWeight="300"
             setDateText="@{document.datetime}"
             app:layout_constraintTop_toBottomOf="@id/tv_url"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
