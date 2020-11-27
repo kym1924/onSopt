@@ -1,5 +1,6 @@
 package com.kimym.onsopt.ui.search
 
+import android.annotation.SuppressLint
 import android.text.Html
 import android.view.View
 import android.widget.TextView
@@ -31,5 +32,12 @@ object SearchBinding {
     @JvmStatic
     fun setTitleText(textView : TextView, titleString : String) {
         textView.text = Html.fromHtml(titleString, HtmlCompat.FROM_HTML_MODE_LEGACY)
+    }
+
+    @SuppressLint("SetTextI18n")
+    @BindingAdapter("setPageText")
+    @JvmStatic
+    fun setPageText(textView : TextView, page : Int) {
+        textView.text = "Page "+(page-1).toString()+" / 50"
     }
 }
