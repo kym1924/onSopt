@@ -10,7 +10,7 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:padding="4dp"
+        android:padding="10dp"
         android:layout_margin="8dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -20,8 +20,6 @@
             android:id="@+id/tv_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginBottom="40dp"
             android:textSize="16sp"
             android:textColor="@color/black"
             android:fontFamily="@font/cairo"
@@ -34,7 +32,7 @@
             android:id="@+id/tv_url"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="15dp"
             android:textSize="16sp"
             android:textColor="@color/black"
             android:fontFamily="@font/cairo"
@@ -51,8 +49,8 @@
             android:textColor="@color/black"
             android:fontFamily="@font/cairo"
             android:textFontWeight="300"
-            android:text="@{document.datetime}"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            setDateText="@{document.datetime}"
+            app:layout_constraintTop_toBottomOf="@id/tv_url"
+            app:layout_constraintEnd_toEndOf="parent"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
