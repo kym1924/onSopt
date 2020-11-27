@@ -29,6 +29,10 @@ class SearchViewModel : ViewModel() {
     fun resetKeyword() {
         keyword.value=""
     }
+    
+    fun resetPage() {
+        _page.value = 1
+    }
 
     fun getKakaoWebSearch() = viewModelScope.launch(Dispatchers.IO){
         _allWeb.postValue(repository.getKakaoWebSearch(keyword.value!!, page.value!!))

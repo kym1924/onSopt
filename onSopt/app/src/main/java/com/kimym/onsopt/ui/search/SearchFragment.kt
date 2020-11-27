@@ -42,6 +42,7 @@ class SearchFragment : Fragment() {
             if (actionId == EditorInfo.IME_ACTION_SEARCH) {
                 if(binding.etSearch.text.toString().isNotEmpty()) {
                     searchViewModel.getKakaoWebSearch()
+                    searchViewModel.resetPage()
                     binding.etSearch.clearFocus()
                 }
                 return@setOnEditorActionListener true
