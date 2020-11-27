@@ -24,7 +24,7 @@
             android:textColor="@color/black"
             android:fontFamily="@font/cairo"
             android:textFontWeight="600"
-            android:text="@{document.title}"
+            setTitleText="@{document.title}"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"/>
 

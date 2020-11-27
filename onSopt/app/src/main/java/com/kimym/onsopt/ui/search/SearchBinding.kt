@@ -1,7 +1,9 @@
 package com.kimym.onsopt.ui.search
 
+import android.text.Html
 import android.view.View
 import android.widget.TextView
+import androidx.core.text.HtmlCompat
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.kimym.onsopt.data.model.Document
@@ -23,5 +25,11 @@ object SearchBinding {
     @JvmStatic
     fun setDateText(textView : TextView, dateString : String) {
         textView.text = dateString.split("T")[0]
+    }
+
+    @BindingAdapter("setTitleText")
+    @JvmStatic
+    fun setTitleText(textView : TextView, titleString : String) {
+        textView.text = Html.fromHtml(titleString, HtmlCompat.FROM_HTML_MODE_LEGACY)
     }
 }
