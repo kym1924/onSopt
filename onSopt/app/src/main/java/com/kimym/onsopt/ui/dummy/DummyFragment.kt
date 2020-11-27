@@ -12,7 +12,7 @@ import com.kimym.onsopt.R
 import com.kimym.onsopt.data.api.RetrofitBuilder
 import com.kimym.onsopt.data.api.dummy.DummyRepository
 import com.kimym.onsopt.databinding.FragmentDummyBinding
-import com.kimym.onsopt.databinding.ItemRecyclerLinearBinding
+import com.kimym.onsopt.databinding.ItemDummyLinearBinding
 
 class DummyFragment : Fragment() {
     private val dummyViewModel : DummyViewModel by activityViewModels()
@@ -29,7 +29,7 @@ class DummyFragment : Fragment() {
             DummyRepository(RetrofitBuilder.dummyService)
         dummyViewModel.init(dummyRepository)
 
-        val adapter = DummyAdapter<ItemRecyclerLinearBinding>()
+        val adapter = DummyAdapter<ItemDummyLinearBinding>()
 
         setDummyAdapter(binding, adapter)
         setSwipeListener(binding)
@@ -42,7 +42,7 @@ class DummyFragment : Fragment() {
         dummyViewModel.getDummyUsers(dummyViewModel.page.value!!)
     }
 
-    private fun setDummyAdapter(binding : FragmentDummyBinding, adapter : DummyAdapter<ItemRecyclerLinearBinding>){
+    private fun setDummyAdapter(binding : FragmentDummyBinding, adapter : DummyAdapter<ItemDummyLinearBinding>){
         dummyViewModel.layoutItem.observe(viewLifecycleOwner, Observer { layoutItem ->
             layoutItem?.let {
                 adapter.setLayout(layoutItem)

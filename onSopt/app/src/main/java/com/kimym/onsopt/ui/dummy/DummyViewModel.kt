@@ -13,7 +13,7 @@ import kotlinx.coroutines.launch
 class DummyViewModel : ViewModel() {
     private lateinit var dummyRepository : DummyRepository
 
-    private val _layoutItem = MutableLiveData<Int>(R.layout.item_recycler_linear)
+    private val _layoutItem = MutableLiveData<Int>(R.layout.item_dummy_linear)
     val layoutItem : LiveData<Int>
         get() = _layoutItem
 
@@ -30,8 +30,8 @@ class DummyViewModel : ViewModel() {
     }
 
     fun changeLayout(){
-        if(_layoutItem.value==R.layout.item_recycler_linear) _layoutItem.value = R.layout.item_recycler_grid
-        else _layoutItem.value = R.layout.item_recycler_linear
+        if(_layoutItem.value==R.layout.item_dummy_linear) _layoutItem.value = R.layout.item_dummy_grid
+        else _layoutItem.value = R.layout.item_dummy_linear
     }
 
     fun getDummyUsers(page : Int) = viewModelScope.launch(Dispatchers.IO) {

@@ -13,7 +13,7 @@ import com.kimym.onsopt.data.model.DummyUserInfo
 class DummyAdapter<B : ViewDataBinding> : RecyclerView.Adapter<DummyAdapter<B>.VHolder<B>>(){
 
     private var users = emptyList<DummyUserInfo>()
-    private var layoutItem = R.layout.item_recycler_linear
+    private var layoutItem = R.layout.item_dummy_linear
 
     override fun onCreateViewHolder(parent : ViewGroup, viewType : Int)
             = VHolder<B>(LayoutInflater.from(parent.context).inflate(layoutItem, parent, false))

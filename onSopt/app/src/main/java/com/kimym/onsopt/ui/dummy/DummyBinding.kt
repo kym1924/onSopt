@@ -23,7 +23,7 @@ object DummyBinding {
     @BindingAdapter("setLayout")
     @JvmStatic
     fun setLayout(recyclerView : RecyclerView, layoutItem : Int) {
-        if(layoutItem == R.layout.item_recycler_linear) recyclerView.layoutManager = LinearLayoutManager(recyclerView.context)
+        if(layoutItem == R.layout.item_dummy_linear) recyclerView.layoutManager = LinearLayoutManager(recyclerView.context)
         else recyclerView.layoutManager = GridLayoutManager(recyclerView.context, 3)
     }
 
