@@ -1,6 +1,6 @@
 package com.kimym.onsopt.data.model
 
-data class KakaoWebData(
+data class WebData(
     val documents: List<Document>,
     val meta: Meta
 )

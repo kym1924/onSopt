@@ -10,7 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.kimym.onsopt.R
 import com.kimym.onsopt.data.api.RetrofitBuilder
-import com.kimym.onsopt.data.api.kakao.KakaoRepository
+import com.kimym.onsopt.data.api.search.SearchRepository
 import com.kimym.onsopt.databinding.FragmentSearchBinding
 
 class SearchFragment : Fragment() {
@@ -25,8 +25,8 @@ class SearchFragment : Fragment() {
         binding.searchViewModel = searchViewModel
         binding.lifecycleOwner = this
 
-        val kakaoRepository = KakaoRepository(RetrofitBuilder.kakaoService)
-        searchViewModel.init(kakaoRepository)
+        val searchRepository = SearchRepository(RetrofitBuilder.searchService)
+        searchViewModel.init(searchRepository)
 
         val adapter = SearchAdapter()
         binding.rvSearchResult.adapter = adapter
@@ -41,7 +41,7 @@ class SearchFragment : Fragment() {
         binding.etSearch.setOnEditorActionListener { _, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_SEARCH) {
                 if(binding.etSearch.text.toString().isNotEmpty()) {
-                    searchViewModel.getKakaoWebSearch()
+                    searchViewModel.getWebSearch()
                     searchViewModel.resetPage()
                     binding.etSearch.clearFocus()
                 }
@@ -53,7 +53,7 @@ class SearchFragment : Fragment() {
 
     private fun setSwipeListener(binding : FragmentSearchBinding){
         binding.swipeLayout.setOnRefreshListener {
-            searchViewModel.getKakaoWebSearch()
+            searchViewModel.getWebSearch()
             binding.swipeLayout.isRefreshing = false
         }
     }
