@@ -14,4 +14,5 @@
     <string name="user">User</string>
     <string name="web">Web</string>
     <string name="myPage">MyPage</string>
+    <string name="hint_search">Please enter the keyword</string>
 </resources>
