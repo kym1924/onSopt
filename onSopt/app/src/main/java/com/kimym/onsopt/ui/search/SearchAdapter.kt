@@ -8,18 +8,18 @@ import androidx.recyclerview.widget.RecyclerView
 import com.kimym.onsopt.BR
 import com.kimym.onsopt.R
 import com.kimym.onsopt.data.model.Document
-import com.kimym.onsopt.databinding.ItemKakaoSearchBinding
+import com.kimym.onsopt.databinding.ItemSearchBinding
 
-class SearchAdapter : RecyclerView.Adapter<SearchAdapter.VHolder<ItemKakaoSearchBinding>>(){
+class SearchAdapter : RecyclerView.Adapter<SearchAdapter.VHolder<ItemSearchBinding>>(){
 
     private var webs= emptyList<Document>()
 
     override fun onCreateViewHolder(parent : ViewGroup, viewType : Int)
-            = VHolder<ItemKakaoSearchBinding>(LayoutInflater.from(parent.context).inflate(R.layout.item_kakao_search, parent, false))
+            = VHolder<ItemSearchBinding>(LayoutInflater.from(parent.context).inflate(R.layout.item_search, parent, false))
 
     override fun getItemCount() = webs.size
 
-    override fun onBindViewHolder(holder : VHolder<ItemKakaoSearchBinding>, position: Int) {
+    override fun onBindViewHolder(holder : VHolder<ItemSearchBinding>, position: Int) {
         holder.bind(webs[position])
     }
 
@@ -29,7 +29,7 @@ class SearchAdapter : RecyclerView.Adapter<SearchAdapter.VHolder<ItemKakaoSearch
     }
 
     inner class VHolder<ItemKakaoSearchBinding>(itemView : View) : RecyclerView.ViewHolder(itemView) {
-        val binding : com.kimym.onsopt.databinding.ItemKakaoSearchBinding = DataBindingUtil.bind(itemView)!!
+        val binding : ItemSearchBinding = DataBindingUtil.bind(itemView)!!
 
         fun bind(document : Document) {
             binding.setVariable(BR.document, document)
