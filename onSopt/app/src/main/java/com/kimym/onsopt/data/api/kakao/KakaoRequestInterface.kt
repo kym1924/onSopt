@@ -9,7 +9,8 @@ interface KakaoRequestInterface {
     @Headers("Authorization: KakaoAK {REST-API KEY}}")
     @GET("web")
     suspend fun getKakaoWebSearch(
-        @Query("query") query : String
+        @Query("query") query : String,
+        @Query("page") page : Int
     ) : KakaoWebData
 }
 

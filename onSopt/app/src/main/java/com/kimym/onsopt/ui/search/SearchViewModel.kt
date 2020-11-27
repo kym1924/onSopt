@@ -18,6 +18,10 @@ class SearchViewModel : ViewModel() {
     val allWeb : LiveData<KakaoWebData>
         get() = _allWeb
 
+    private val _page = MutableLiveData<Int>(1)
+    val page : LiveData<Int>
+        get() = _page
+
     fun init(repository : KakaoRepository) {
         this.repository = repository
     }
@@ -27,6 +31,6 @@ class SearchViewModel : ViewModel() {
     }
 
     fun getKakaoWebSearch() = viewModelScope.launch(Dispatchers.IO){
-        _allWeb.postValue(repository.getKakaoWebSearch(keyword.value!!))
+        _allWeb.postValue(repository.getKakaoWebSearch(keyword.value!!, page.value!!))
     }
 }
