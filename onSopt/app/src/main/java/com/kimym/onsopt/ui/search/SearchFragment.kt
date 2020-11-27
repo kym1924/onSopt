@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -30,11 +31,21 @@ class SearchFragment : Fragment() {
         val adapter = SearchAdapter()
         binding.rvSearchResult.adapter = adapter
 
+        setSearchListener(binding)
+
         return binding.root
     }
 
-    override fun onStart() {
-        super.onStart()
-        searchViewModel.getKakaoWebSearch()
+    private fun setSearchListener(binding : FragmentSearchBinding) {
+        binding.etSearch.setOnEditorActionListener { _, actionId, _ ->
+            if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                if(binding.etSearch.text.toString().isNotEmpty()) {
+                    searchViewModel.getKakaoWebSearch()
+                    binding.etSearch.clearFocus()
+                }
+                return@setOnEditorActionListener true
+            }
+            return@setOnEditorActionListener false
+        }
     }
 }
