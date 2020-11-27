@@ -32,6 +32,7 @@ class SearchFragment : Fragment() {
         binding.rvSearchResult.adapter = adapter
 
         setSearchListener(binding)
+        setSwipeListener(binding)
 
         return binding.root
     }
@@ -46,6 +47,13 @@ class SearchFragment : Fragment() {
                 return@setOnEditorActionListener true
             }
             return@setOnEditorActionListener false
+        }
+    }
+
+    private fun setSwipeListener(binding : FragmentSearchBinding){
+        binding.swipeLayout.setOnRefreshListener {
+            searchViewModel.getKakaoWebSearch()
+            binding.swipeLayout.isRefreshing = false
         }
     }
 }

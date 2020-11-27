@@ -32,5 +32,6 @@ class SearchViewModel : ViewModel() {
 
     fun getKakaoWebSearch() = viewModelScope.launch(Dispatchers.IO){
         _allWeb.postValue(repository.getKakaoWebSearch(keyword.value!!, page.value!!))
+        if(page.value!!<50) _page.postValue(_page.value!!+1)
     }
 }
