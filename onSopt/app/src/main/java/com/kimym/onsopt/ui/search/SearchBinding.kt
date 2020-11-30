@@ -1,12 +1,12 @@
 package com.kimym.onsopt.ui.search
 
-import android.annotation.SuppressLint
 import android.text.Html
 import android.view.View
 import android.widget.TextView
 import androidx.core.text.HtmlCompat
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.kimym.onsopt.R
 import com.kimym.onsopt.data.model.Document
 
 object SearchBinding {
@@ -34,10 +34,9 @@ object SearchBinding {
         textView.text = Html.fromHtml(titleString, HtmlCompat.FROM_HTML_MODE_LEGACY)
     }
 
-    @SuppressLint("SetTextI18n")
     @BindingAdapter("setPageText")
     @JvmStatic
     fun setPageText(textView : TextView, page : Int) {
-        textView.text = "Page "+(page-1).toString()+" / 50"
+        textView.text = String.format(textView.context.resources.getString(R.string.page), page-1)
     }
 }

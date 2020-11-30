@@ -15,4 +15,5 @@
     <string name="web">Web</string>
     <string name="myPage">MyPage</string>
     <string name="hint_search">Please enter the keyword</string>
+    <string name="page">Page %d / 50</string>
 </resources>
