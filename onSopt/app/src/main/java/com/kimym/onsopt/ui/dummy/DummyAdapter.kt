@@ -5,9 +5,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.kimym.onsopt.BR
 import com.kimym.onsopt.R
+import com.kimym.onsopt.data.model.DummyDiffUtil
 import com.kimym.onsopt.data.model.DummyUserInfo
 
 class DummyAdapter<B : ViewDataBinding> : RecyclerView.Adapter<DummyAdapter<B>.VHolder<B>>(){
@@ -24,9 +26,11 @@ class DummyAdapter<B : ViewDataBinding> : RecyclerView.Adapter<DummyAdapter<B>.V
         holder.bind(users[position])
     }
 
-    fun setUsers(list : List<DummyUserInfo>) {
-        this.users = list
-        notifyDataSetChanged()
+    fun setUsers(newList : List<DummyUserInfo>) {
+        val diffUtilCallBack = DummyDiffUtil(users, newList)
+        val diffResult = DiffUtil.calculateDiff(diffUtilCallBack)
+        this.users = newList
+        diffResult.dispatchUpdatesTo(this)
     }
 
     fun setLayout(layoutItem : Int){
