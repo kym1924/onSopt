@@ -23,13 +23,11 @@ class SearchFragment : Fragment() {
     ): View? {
         val binding: FragmentSearchBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_search, container, false)
         binding.searchViewModel = searchViewModel
+        binding.searchAdapter = SearchAdapter()
         binding.lifecycleOwner = this
 
         val searchRepository = SearchRepository(RetrofitBuilder.searchService)
         searchViewModel.init(searchRepository)
-
-        val adapter = SearchAdapter()
-        binding.rvSearchResult.adapter = adapter
 
         setSearchListener(binding)
         setSwipeListener(binding)
@@ -51,7 +49,7 @@ class SearchFragment : Fragment() {
         }
     }
 
-    private fun setSwipeListener(binding : FragmentSearchBinding){
+    private fun setSwipeListener(binding : FragmentSearchBinding) {
         binding.swipeLayout.setOnRefreshListener {
             searchViewModel.getWebSearch()
             binding.swipeLayout.isRefreshing = false

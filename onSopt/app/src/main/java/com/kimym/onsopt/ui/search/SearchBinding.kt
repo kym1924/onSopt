@@ -16,6 +16,12 @@ object SearchBinding {
         view.visibility = if (keyword.isEmpty()) View.INVISIBLE else View.VISIBLE
     }
 
+    @BindingAdapter("setAdapter")
+    @JvmStatic
+    fun setAdapter(recyclerView : RecyclerView, adapter : SearchAdapter) {
+        recyclerView.adapter = adapter
+    }
+
     @BindingAdapter("setListItem")
     @JvmStatic
     fun setListItem(recyclerView : RecyclerView, webs : List<Document>?) {
