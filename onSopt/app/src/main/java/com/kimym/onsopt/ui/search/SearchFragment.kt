@@ -1,5 +1,7 @@
 package com.kimym.onsopt.ui.search
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +13,7 @@ import androidx.fragment.app.activityViewModels
 import com.kimym.onsopt.R
 import com.kimym.onsopt.data.api.RetrofitBuilder
 import com.kimym.onsopt.data.api.search.SearchRepository
+import com.kimym.onsopt.data.model.Document
 import com.kimym.onsopt.databinding.FragmentSearchBinding
 
 class SearchFragment : Fragment() {
@@ -23,12 +26,12 @@ class SearchFragment : Fragment() {
     ): View? {
         val binding: FragmentSearchBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_search, container, false)
         binding.searchViewModel = searchViewModel
-        binding.searchAdapter = SearchAdapter()
         binding.lifecycleOwner = this
 
         val searchRepository = SearchRepository(RetrofitBuilder.searchService)
         searchViewModel.init(searchRepository)
 
+        setAdapter(binding)
         setSearchListener(binding)
         setSwipeListener(binding)
 
@@ -54,5 +57,18 @@ class SearchFragment : Fragment() {
             searchViewModel.getWebSearch()
             binding.swipeLayout.isRefreshing = false
         }
+    }
+
+    private fun setAdapter(binding : FragmentSearchBinding) {
+        val searchAdapter = SearchAdapter()
+
+        searchAdapter.urlClickListener(object : SearchAdapter.UrlClickListener {
+            override fun onClick(view: View, document : Document) {
+                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(document.url))
+                startActivity(intent)
+            }
+        })
+
+        binding.rvSearchResult.adapter = searchAdapter
     }
 }
