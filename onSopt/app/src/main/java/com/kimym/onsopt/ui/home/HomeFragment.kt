@@ -21,12 +21,12 @@ class HomeFragment : Fragment() {
         binding.lifecycleOwner = this@HomeFragment
 
         setTabLayoutListener(binding)
-        setViewPager(binding)
+        setHomeViewPager(binding)
 
         return binding.root
     }
 
-    private fun setViewPager(binding : FragmentHomeBinding) {
+    private fun setHomeViewPager(binding : FragmentHomeBinding) {
         binding.vpHome.adapter = HomePagerAdapter(childFragmentManager)
 
         binding.vpHome.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
