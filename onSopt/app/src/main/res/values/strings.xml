@@ -12,7 +12,7 @@
     <string name="register">SignUp</string>
     <string name="login">SignIn</string>
     <string name="user">User</string>
-    <string name="web">Web</string>
+    <string name="search">Search</string>
     <string name="hint_search">Please enter the keyword</string>
     <string name="page">Page %d / 50</string>
     <string name="welcome">Welcome</string>

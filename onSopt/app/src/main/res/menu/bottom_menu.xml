@@ -6,7 +6,7 @@
     <item android:id="@+id/nv_user"
         android:icon="@drawable/bottom_ic_user"
         android:title="@string/user" />
-    <item android:id="@+id/nv_web"
-        android:icon="@drawable/bottom_ic_web"
-        android:title="@string/web"/>
+    <item android:id="@+id/nv_search"
+        android:icon="@drawable/bottom_ic_search"
+        android:title="@string/search"/>
 </menu>
