@@ -21,7 +21,7 @@ class DummyViewModel : ViewModel() {
     val allUsers : LiveData<List<DummyUserInfo>>
         get() = _allUsers
 
-    private val _page = MutableLiveData<Int>(1)
+    private val _page = MutableLiveData(1)
     val page : LiveData<Int>
         get() = _page
 
