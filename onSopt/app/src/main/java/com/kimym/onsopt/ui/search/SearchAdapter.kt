@@ -23,7 +23,6 @@ class SearchAdapter : RecyclerView.Adapter<SearchAdapter.VHolder>(){
 
     override fun onBindViewHolder(holder : VHolder, position: Int) {
         holder.bind(webs[position])
-        holder.itemView.setOnClickListener{ urlClickListener.onClick(it, webs[position])}
     }
 
     fun setResults(newList : List<Document>) {
@@ -39,15 +38,5 @@ class SearchAdapter : RecyclerView.Adapter<SearchAdapter.VHolder>(){
         fun bind(document : Document) {
             binding.setVariable(BR.document, document)
         }
-    }
-
-    private lateinit var urlClickListener : UrlClickListener
-
-    interface UrlClickListener {
-        fun onClick(view : View, document : Document)
-    }
-
-    fun urlClickListener(urlClickListener : UrlClickListener){
-        this.urlClickListener = urlClickListener
     }
 }
