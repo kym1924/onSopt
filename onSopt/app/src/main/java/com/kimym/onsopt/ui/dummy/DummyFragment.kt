@@ -26,13 +26,10 @@ class DummyFragment : Fragment() {
         binding.dummyViewModel = dummyViewModel
         binding.lifecycleOwner = this
 
-        val dummyRepository =
-            DummyRepository(RetrofitBuilder.dummyService)
+        val dummyRepository = DummyRepository(RetrofitBuilder.dummyService)
         dummyViewModel.init(dummyRepository)
 
-        val adapter = DummyAdapter<ItemDummyLinearBinding>()
-
-        setDummyAdapter(binding, adapter)
+        setDummyAdapter(binding)
         setSwipeListener(binding)
 
         return binding.root
@@ -43,7 +40,8 @@ class DummyFragment : Fragment() {
         dummyViewModel.getDummyUsers()
     }
 
-    private fun setDummyAdapter(binding : FragmentDummyBinding, adapter : DummyAdapter<ItemDummyLinearBinding>){
+    private fun setDummyAdapter(binding : FragmentDummyBinding){
+        val adapter = DummyAdapter<ItemDummyLinearBinding>()
         dummyViewModel.layoutItem.observe(viewLifecycleOwner, Observer { layoutItem ->
             layoutItem?.let {
                 adapter.setLayout(layoutItem)
