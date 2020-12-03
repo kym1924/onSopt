@@ -8,6 +8,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
+import com.baoyz.widget.PullRefreshLayout
 import com.kimym.onsopt.R
 import com.kimym.onsopt.data.api.RetrofitBuilder
 import com.kimym.onsopt.data.api.dummy.DummyRepository
@@ -39,7 +40,7 @@ class DummyFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
-        dummyViewModel.getDummyUsers(dummyViewModel.page.value!!)
+        dummyViewModel.getDummyUsers()
     }
 
     private fun setDummyAdapter(binding : FragmentDummyBinding, adapter : DummyAdapter<ItemDummyLinearBinding>){
@@ -51,9 +52,10 @@ class DummyFragment : Fragment() {
         })
     }
     private fun setSwipeListener(binding : FragmentDummyBinding){
-        binding.swipeLayout.setOnRefreshListener {
-            dummyViewModel.getDummyUsers(dummyViewModel.page.value!!)
-            binding.swipeLayout.isRefreshing = false
+        binding.layoutDummySwipe.setRefreshStyle(PullRefreshLayout.STYLE_MATERIAL)
+        binding.layoutDummySwipe.setOnRefreshListener {
+            dummyViewModel.getDummyUsers()
+            binding.layoutDummySwipe.setRefreshing(false)
         }
     }
 }

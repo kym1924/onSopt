@@ -34,8 +34,8 @@ class DummyViewModel : ViewModel() {
         else _layoutItem.value = R.layout.item_dummy_linear
     }
 
-    fun getDummyUsers(page : Int) = viewModelScope.launch(Dispatchers.IO) {
+    fun getDummyUsers() = viewModelScope.launch(Dispatchers.IO) {
         if(_page.value==1) _page.postValue(2) else _page.postValue(1)
-        _allUsers.postValue(dummyRepository.getDummyUsers(page).data)
+        _allUsers.postValue(dummyRepository.getDummyUsers(page.value!!).data)
     }
 }

@@ -10,6 +10,7 @@ import android.view.inputmethod.EditorInfo
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import com.baoyz.widget.PullRefreshLayout
 import com.kimym.onsopt.R
 import com.kimym.onsopt.data.api.RetrofitBuilder
 import com.kimym.onsopt.data.api.search.SearchRepository
@@ -53,9 +54,10 @@ class SearchFragment : Fragment() {
     }
 
     private fun setSwipeListener(binding : FragmentSearchBinding) {
-        binding.swipeLayout.setOnRefreshListener {
+        binding.layoutSearchSwipe.setRefreshStyle(PullRefreshLayout.STYLE_MATERIAL)
+        binding.layoutSearchSwipe.setOnRefreshListener {
             searchViewModel.getWebSearch()
-            binding.swipeLayout.isRefreshing = false
+            binding.layoutSearchSwipe.setRefreshing(false)
         }
     }
 

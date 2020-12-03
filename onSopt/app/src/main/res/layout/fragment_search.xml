@@ -58,11 +58,12 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
-        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-            android:id="@+id/swipe_layout"
+        <com.baoyz.widget.PullRefreshLayout
+            android:id="@+id/layout_search_swipe"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:padding="14dp"
+            android:layout_margin="14dp"
+            app:refreshColor="@color/yellow"
             app:layout_constraintTop_toBottomOf="@id/tv_page"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -79,8 +80,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"/>
 
-        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
-
+        </com.baoyz.widget.PullRefreshLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </layout>
