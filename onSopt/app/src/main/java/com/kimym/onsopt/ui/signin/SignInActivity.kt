@@ -26,11 +26,17 @@ class SignInActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_sign_in)
         binding.signInViewModel = signInViewModel
         binding.lifecycleOwner = this
+
+        setObserver()
+        setAutoLogin()
+        setMoveSignUp(binding)
     }
 
-    override fun onStart() {
-        super.onStart()
+    private fun setAutoLogin() {
+        signInViewModel.autoLogin()
+    }
 
+    private fun setObserver() {
         signInViewModel.isValid.observe(this, Observer { isValid->
             isValid?.let { if(isValid) signInViewModel.signIn() else showToast("Invalid information") }
         })
@@ -40,9 +46,9 @@ class SignInActivity : AppCompatActivity() {
         })
     }
 
-    override fun onResume() {
-        super.onResume()
-
-        binding.tvRegister.setOnClickListener{ startActivityForResult(Intent(this, SignUpActivity::class.java),1) }
+    private fun setMoveSignUp(binding : ActivitySignInBinding) {
+        binding.tvRegister.setOnClickListener{
+            startActivityForResult(Intent(this, SignUpActivity::class.java),1)
+        }
     }
 }
