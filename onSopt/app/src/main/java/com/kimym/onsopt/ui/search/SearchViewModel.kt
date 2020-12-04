@@ -1,18 +1,19 @@
 package com.kimym.onsopt.ui.search
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.hilt.Assisted
+import androidx.hilt.lifecycle.ViewModelInject
+import androidx.lifecycle.*
 import com.kimym.onsopt.data.api.search.SearchRepository
 import com.kimym.onsopt.data.model.WebData
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class SearchViewModel : ViewModel() {
+class SearchViewModel @ViewModelInject constructor(
+    private val repository : SearchRepository,
+    @Assisted private val savedStateHandle : SavedStateHandle
+): ViewModel() {
 
     val keyword = MutableLiveData<String>("")
-    private lateinit var repository : SearchRepository
 
     private val _allWeb = MutableLiveData<WebData>()
     val allWeb : LiveData<WebData>
@@ -21,10 +22,6 @@ class SearchViewModel : ViewModel() {
     private val _page = MutableLiveData(1)
     val page : LiveData<Int>
         get() = _page
-
-    fun init(repository : SearchRepository) {
-        this.repository = repository
-    }
 
     fun resetKeyword() {
         keyword.value=""

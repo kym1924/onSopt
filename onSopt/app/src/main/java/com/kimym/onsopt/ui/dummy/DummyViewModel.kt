@@ -1,17 +1,18 @@
 package com.kimym.onsopt.ui.dummy
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.hilt.Assisted
+import androidx.hilt.lifecycle.ViewModelInject
+import androidx.lifecycle.*
 import com.kimym.onsopt.R
 import com.kimym.onsopt.data.api.dummy.DummyRepository
 import com.kimym.onsopt.data.model.DummyUserInfo
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class DummyViewModel : ViewModel() {
-    private lateinit var dummyRepository : DummyRepository
+class DummyViewModel @ViewModelInject constructor(
+    private val dummyRepository : DummyRepository,
+    @Assisted private val savedStateHandle : SavedStateHandle
+): ViewModel() {
 
     private val _layoutItem = MutableLiveData<Int>(R.layout.item_dummy_linear)
     val layoutItem : LiveData<Int>
@@ -24,10 +25,6 @@ class DummyViewModel : ViewModel() {
     private val _page = MutableLiveData(1)
     val page : LiveData<Int>
         get() = _page
-
-    fun init(repository : DummyRepository) {
-        this.dummyRepository = repository
-    }
 
     fun changeLayout(){
         if(_layoutItem.value==R.layout.item_dummy_linear) _layoutItem.value = R.layout.item_dummy_grid

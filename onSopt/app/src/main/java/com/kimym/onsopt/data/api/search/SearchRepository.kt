@@ -1,6 +1,9 @@
 package com.kimym.onsopt.data.api.search
 
-class SearchRepository(private val requestInterface : SearchRequestInterface) {
+import javax.inject.Inject
 
-    suspend fun getWebSearch(query : String, page : Int) = requestInterface.getWebSearch(query, page)
+class SearchRepository @Inject constructor(
+    private val searchDataSource : SearchDataSource
+) {
+    suspend fun getWebSearch(query : String, page : Int) = searchDataSource.getWebSearch(query, page)
 }

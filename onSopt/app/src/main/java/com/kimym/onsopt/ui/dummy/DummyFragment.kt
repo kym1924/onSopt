@@ -10,11 +10,11 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import com.baoyz.widget.PullRefreshLayout
 import com.kimym.onsopt.R
-import com.kimym.onsopt.data.api.RetrofitBuilder
-import com.kimym.onsopt.data.api.dummy.DummyRepository
 import com.kimym.onsopt.databinding.FragmentDummyBinding
 import com.kimym.onsopt.databinding.ItemDummyLinearBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class DummyFragment : Fragment() {
     private val dummyViewModel : DummyViewModel by activityViewModels()
 
@@ -25,9 +25,6 @@ class DummyFragment : Fragment() {
         val binding : FragmentDummyBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_dummy, container, false)
         binding.dummyViewModel = dummyViewModel
         binding.lifecycleOwner = this
-
-        val dummyRepository = DummyRepository(RetrofitBuilder.dummyService)
-        dummyViewModel.init(dummyRepository)
 
         setDummyAdapter(binding)
         setSwipeListener(binding)

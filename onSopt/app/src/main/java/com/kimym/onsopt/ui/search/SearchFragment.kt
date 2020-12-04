@@ -10,10 +10,10 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.baoyz.widget.PullRefreshLayout
 import com.kimym.onsopt.R
-import com.kimym.onsopt.data.api.RetrofitBuilder
-import com.kimym.onsopt.data.api.search.SearchRepository
 import com.kimym.onsopt.databinding.FragmentSearchBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class SearchFragment : Fragment() {
 
     private val searchViewModel : SearchViewModel by activityViewModels()
@@ -25,9 +25,6 @@ class SearchFragment : Fragment() {
         val binding: FragmentSearchBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_search, container, false)
         binding.searchViewModel = searchViewModel
         binding.lifecycleOwner = this
-
-        val searchRepository = SearchRepository(RetrofitBuilder.searchService)
-        searchViewModel.init(searchRepository)
 
         setAdapter(binding)
         setSearchListener(binding)

@@ -7,14 +7,14 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import com.kimym.onsopt.R
-import com.kimym.onsopt.data.api.RetrofitBuilder
-import com.kimym.onsopt.data.api.user.UserRepository
 import com.kimym.onsopt.databinding.ActivitySignInBinding
 import com.kimym.onsopt.ui.main.MainActivity
 import com.kimym.onsopt.ui.signup.SignUpActivity
 import com.kimym.onsopt.util.showToast
 import com.kimym.onsopt.util.startActivity
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class SignInActivity : AppCompatActivity() {
 
     private lateinit var binding : ActivitySignInBinding
@@ -26,10 +26,6 @@ class SignInActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_sign_in)
         binding.signInViewModel = signInViewModel
         binding.lifecycleOwner = this
-
-        val userRepository =
-            UserRepository(RetrofitBuilder.userService)
-        signInViewModel.init(userRepository)
     }
 
     override fun onStart() {

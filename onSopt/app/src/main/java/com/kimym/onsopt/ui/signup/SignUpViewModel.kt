@@ -1,19 +1,20 @@
 package com.kimym.onsopt.ui.signup
 
 import android.util.Log
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.hilt.Assisted
+import androidx.hilt.lifecycle.ViewModelInject
+import androidx.lifecycle.*
 import com.kimym.onsopt.data.api.user.UserRepository
 import com.kimym.onsopt.data.model.RequestSignUp
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import retrofit2.HttpException
 
-class SignUpViewModel : ViewModel() {
+class SignUpViewModel @ViewModelInject constructor(
+    private val userRepository : UserRepository,
+    @Assisted private val savedStateHandle : SavedStateHandle
+): ViewModel() {
 
-    private lateinit var userRepository : UserRepository
     val name = MutableLiveData<String>("")
     val email = MutableLiveData<String>("")
     val password = MutableLiveData<String>("")
@@ -30,10 +31,6 @@ class SignUpViewModel : ViewModel() {
     private val _isSignUp = MutableLiveData<Boolean>()
     val isSignUp : LiveData<Boolean>
         get() = _isSignUp
-
-    fun init(repository : UserRepository) {
-        this.userRepository = repository
-    }
 
     fun checkPassword() {
         _isSamePassword.value = (password.value == passwordCheck.value && !password.value.isNullOrEmpty())

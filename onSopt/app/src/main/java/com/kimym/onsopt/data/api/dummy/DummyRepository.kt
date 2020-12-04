@@ -1,6 +1,9 @@
 package com.kimym.onsopt.data.api.dummy
 
-class DummyRepository(private val requestInterface : DummyRequestInterface) {
+import javax.inject.Inject
 
-    suspend fun getDummyUsers(page : Int) = requestInterface.getDummyUsers(page)
+class DummyRepository @Inject constructor(
+    private val dummyDataSource : DummyDataSource
+) {
+    suspend fun getDummyUsers(page : Int) = dummyDataSource.getDummyUsers(page)
 }
