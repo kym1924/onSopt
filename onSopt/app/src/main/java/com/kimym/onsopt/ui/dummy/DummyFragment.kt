@@ -26,18 +26,18 @@ class DummyFragment : Fragment() {
         binding.dummyViewModel = dummyViewModel
         binding.lifecycleOwner = this
 
+        setDummyList()
         setDummyAdapter(binding)
         setSwipeListener(binding)
 
         return binding.root
     }
 
-    override fun onStart() {
-        super.onStart()
+    private fun setDummyList() {
         dummyViewModel.getDummyUsers()
     }
 
-    private fun setDummyAdapter(binding : FragmentDummyBinding){
+    private fun setDummyAdapter(binding : FragmentDummyBinding) {
         val adapter = DummyAdapter<ItemDummyLinearBinding>()
         dummyViewModel.layoutItem.observe(viewLifecycleOwner, Observer { layoutItem ->
             layoutItem?.let {
@@ -46,7 +46,8 @@ class DummyFragment : Fragment() {
             }
         })
     }
-    private fun setSwipeListener(binding : FragmentDummyBinding){
+
+    private fun setSwipeListener(binding : FragmentDummyBinding) {
         binding.layoutDummySwipe.setRefreshStyle(PullRefreshLayout.STYLE_MATERIAL)
         binding.layoutDummySwipe.setOnRefreshListener {
             dummyViewModel.getDummyUsers()
